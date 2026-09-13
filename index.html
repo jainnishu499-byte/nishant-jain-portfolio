@@ -2838,31 +2838,145 @@
       text-transform: uppercase;
     }
 
-    /* Floating WhatsApp Chat Bubble */
-    .floating-wa-bubble {
+    /* Ultra-Premium Floating WhatsApp Chat Button */
+    .floating-wa-wrap {
       position: fixed;
-      bottom: 28px;
-      right: 28px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: #22c55e;
-      box-shadow: 0 10px 30px rgba(34, 197, 94, 0.45);
+      bottom: 26px;
+      right: 26px;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+    }
+
+    .floating-wa-bubble {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 999;
-      transition: all 0.3s ease;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: linear-gradient(140deg, #2ae979 0%, #20be65 48%, #108542 100%);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 
+        0 10px 28px -4px rgba(37, 211, 102, 0.55),
+        0 4px 14px rgba(0, 0, 0, 0.4),
+        inset 0 1.5px 2px rgba(255, 255, 255, 0.6),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.3);
       text-decoration: none;
-      animation: floatPulse 3s ease-in-out infinite;
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
     }
+
+    /* Outer Sonar Radar Ring */
+    .floating-wa-bubble::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      border: 2px solid rgba(37, 211, 102, 0.75);
+      animation: waRadar 2.4s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+      pointer-events: none;
+    }
+
+    /* Ambient Glow Pulse */
+    .floating-wa-bubble::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(42, 233, 121, 0.5) 0%, rgba(37, 211, 102, 0) 70%);
+      animation: waGlowPulse 2.4s ease-in-out infinite alternate;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Online Green Dot Indicator */
+    .wa-online-dot {
+      position: absolute;
+      top: 1px;
+      right: 1px;
+      width: 13px;
+      height: 13px;
+      background: #22c55e;
+      border: 2px solid #05030e;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #22c55e;
+      z-index: 2;
+    }
+
+    /* Desktop Sleek Tooltip / Badge */
+    .wa-pill-label {
+      position: absolute;
+      right: calc(100% + 14px);
+      top: 50%;
+      transform: translateY(-50%) translateX(6px);
+      background: rgba(14, 10, 26, 0.9);
+      color: #f8fafc;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      padding: 7px 15px;
+      border-radius: 100px;
+      border: 1px solid rgba(167, 139, 250, 0.35);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 15px rgba(37, 211, 102, 0.2);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .wa-pill-label .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 6px #22c55e;
+    }
+
+    .floating-wa-wrap:hover .wa-pill-label {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+
     .floating-wa-bubble:hover {
-      transform: scale(1.12);
-      box-shadow: 0 15px 35px rgba(34, 197, 94, 0.7);
+      transform: scale(1.1) translateY(-3px);
+      box-shadow: 
+        0 14px 34px -2px rgba(37, 211, 102, 0.75),
+        0 6px 16px rgba(0, 0, 0, 0.4),
+        inset 0 2px 3px rgba(255, 255, 255, 0.8),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.3);
     }
-    @keyframes floatPulse {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
+
+    @keyframes waRadar {
+      0% {
+        transform: scale(0.95);
+        opacity: 0.9;
+      }
+      70% {
+        transform: scale(1.55);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1.6);
+        opacity: 0;
+      }
+    }
+
+    @keyframes waGlowPulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.3;
+      }
+      100% {
+        transform: scale(1.25);
+        opacity: 0.75;
+      }
     }
 
   
@@ -3353,16 +3467,25 @@
         font-size: 12px;
       }
 
-      /* Floating WA Bubble on Mobile */
+      /* Ultra-Premium Floating WA Bubble on Mobile */
+      .floating-wa-wrap {
+        bottom: 18px !important;
+        right: 18px !important;
+      }
       .floating-wa-bubble {
-        bottom: 16px !important;
-        right: 16px !important;
-        width: 50px !important;
-        height: 50px !important;
+        width: 52px !important;
+        height: 52px !important;
       }
       .floating-wa-bubble svg {
         width: 26px !important;
         height: 26px !important;
+      }
+      .wa-online-dot {
+        width: 11px !important;
+        height: 11px !important;
+      }
+      .wa-pill-label {
+        display: none !important;
       }
 
       /* Video Modal Player on Mobile */
@@ -4374,10 +4497,17 @@
         </div>
       </div>
 
-      <!-- Floating WhatsApp Chat Bubble -->
-      <a href="https://wa.me/919468993588?text=Hi%20Nishant,%20I'm%20interested%20in%20your%20video%20editing%20services!" target="_blank" rel="noopener noreferrer" class="floating-wa-bubble" title="Chat on WhatsApp">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="#ffffff"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.541 1.961.828 3.023.829h.005c3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.816-5.991-6.016zm3.411 8.232c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.111-.059-.265-.087-.611-.202-1.054-.396-1.859-.816-3.072-2.709-3.165-2.833-.093-.124-.754-.997-.754-1.901 0-.905.474-1.35.643-1.536.17-.186.371-.233.495-.233.124 0 .248.001.355.006.113.006.264-.043.413.315.155.371.531 1.288.577 1.381.047.093.078.202.016.326-.062.124-.093.202-.186.31-.093.109-.196.243-.28.326-.093.093-.191.196-.082.383.109.186.483.797 1.037 1.29 1.151 1.026 1.83 1.077 2.062 1.185.233.109.372.093.511-.062.14-.155.597-.697.755-.937.159-.24.318-.202.536-.124.218.077 1.381.651 1.62.77.24.119.398.176.457.275.059.1.059.576-.085.981z"/></svg>
-      </a>
+      <!-- Ultra-Premium Floating WhatsApp Chat Button -->
+      <div class="floating-wa-wrap">
+        <a href="https://wa.me/919468993588?text=Hi%20Nishant,%20I'm%20interested%20in%20your%20video%20editing%20services!" target="_blank" rel="noopener noreferrer" class="floating-wa-bubble" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+          <span class="wa-online-dot"></span>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        </a>
+        <div class="wa-pill-label">
+          <span class="live-dot"></span>
+          <span>Chat on WhatsApp</span>
+        </div>
+      </div>
     </section>
 
 
