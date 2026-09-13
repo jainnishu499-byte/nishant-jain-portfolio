@@ -1,0 +1,4476 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nishant Jain | Video Editor & Motion Designer</title>
+  <meta name="description" content="Professional video editing and motion graphics portfolio" />
+  <link rel="icon" href="profile.jpeg" sizes="32x32" type="image/jpeg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=Sora:wght@400;500;600;700;800;900&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ================= Global Variables & Reset ================= */
+    :root {
+      --bg: #05030e;
+      --bg-secondary: #080414;
+      --bg-card: rgba(18, 10, 36, 0.75);
+      --bg-secondary-rgb: 8, 4, 20;
+      --border: rgba(167, 139, 250, 0.16);
+      --border-hover: rgba(167, 139, 250, 0.45);
+      --accent: #a855f7;
+      --accent-bright: #c084fc;
+      --accent-primary: #7c3aed;
+      --text-primary: #f8fafc;
+      --text-secondary: rgba(226, 232, 240, 0.75);
+      --text-muted: rgba(196, 181, 253, 0.55);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: 'Sora', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    ::selection {
+      background: #7c3aed;
+      color: #ffffff;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    /* ================= Floating Pill Navbar ================= */
+    .navbar-wrapper {
+      position: fixed;
+      top: 18px;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(4px, 2vw, 10px);
+      pointer-events: none;
+      padding: 0 10px;
+      max-width: 100vw;
+    }
+
+    .nav-logo-btn {
+      pointer-events: auto;
+      cursor: pointer;
+      width: clamp(34px, 9vw, 42px);
+      height: clamp(34px, 9vw, 42px);
+      border-radius: 12px;
+      background: linear-gradient(145deg, #1a0533, #0f0220);
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-logo-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-logo-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .navbar-pill {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(13, 7, 28, 0.65);
+      border: 1px solid rgba(124, 58, 237, 0.12);
+      border-radius: 100px;
+      padding: 4px 6px;
+      overflow-x: hidden;
+      max-width: calc(100vw - 70px);
+    }
+
+    .nav-pill-btn {
+      position: relative;
+      padding: clamp(6px, 1.8vw, 7px) clamp(7px, 2.4vw, 12px);
+      border-radius: 100px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: rgba(196, 181, 253, 0.5);
+      font-size: clamp(10px, 2.6vw, 12px);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      transition: color 0.25s ease, background 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .nav-pill-btn:hover {
+      color: #e9d5ff;
+    }
+
+    .nav-pill-btn.active {
+      color: #e9d5ff;
+      background: rgba(167, 139, 250, 0.1);
+    }
+
+    .nav-pill-btn .active-dot {
+      display: none;
+      position: absolute;
+      top: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #c084fc, #a855f7);
+      box-shadow: 0 0 8px rgba(192, 132, 252, 0.8);
+      pointer-events: none;
+    }
+
+    .nav-pill-btn.active .active-dot {
+      display: block;
+    }
+
+    .nav-pill-contact-btn {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(6px, 1.8vw, 7px) clamp(10px, 3vw, 16px);
+      border-radius: 100px;
+      background: linear-gradient(135deg, #7c3aed, #a855f7, #9333ea);
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      font-size: clamp(10px, 2.6vw, 12px);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .nav-pill-contact-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
+    }
+
+    /* ================= Hero Section ================= */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0 24px;
+      text-align: center;
+      background-color: #05030e;
+    }
+
+    #heroCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-light-beam {
+      position: absolute;
+      top: 15%;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(90deg, transparent, rgba(123, 61, 255, 0.4), rgba(167, 139, 250, 0.6), rgba(100, 30, 200, 0.4), transparent);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: radial-gradient(ellipse 85% 80% at 50% 50%, transparent 30%, rgba(5, 3, 14, 0.55) 72%, rgba(5, 3, 14, 0.92) 100%);
+    }
+
+    .hero-cosmic-rings {
+      position: absolute;
+      z-index: 1;
+      pointer-events: none;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .hero-ring-1 {
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      border: 1px solid rgba(167, 139, 250, 0.12);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: rotateRing 30s linear infinite;
+    }
+
+    .hero-ring-1-dot {
+      position: absolute;
+      top: -4px;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #a78bfa;
+      box-shadow: 0 0 16px 4px rgba(167, 139, 250, 0.6);
+      transform: translateX(-50%);
+    }
+
+    .hero-ring-2 {
+      width: 720px;
+      height: 720px;
+      border-radius: 50%;
+      border: 1px solid rgba(123, 61, 255, 0.08);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: rotateRingRev 45s linear infinite;
+    }
+
+    .hero-ring-2-dot {
+      position: absolute;
+      bottom: -4px;
+      right: 30%;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #7b3dff;
+      box-shadow: 0 0 12px 3px rgba(123, 61, 255, 0.6);
+    }
+
+    .hero-ring-3 {
+      width: 900px;
+      height: 900px;
+      border-radius: 50%;
+      border: 1px dashed rgba(167, 139, 250, 0.05);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes rotateRing {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    @keyframes rotateRingRev {
+      from { transform: translate(-50%, -50%) rotate(360deg); }
+      to { transform: translate(-50%, -50%) rotate(0deg); }
+    }
+
+    .hero-center-glow {
+      position: absolute;
+      width: 600px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(123, 61, 255, 0.35) 0%, transparent 70%);
+      filter: blur(50px);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .avail-badge-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 36px;
+    }
+
+    .avail-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(123, 61, 255, 0.14), rgba(167, 139, 250, 0.07));
+      border: 1px solid rgba(167, 139, 250, 0.28);
+      border-radius: 100px;
+      padding: 8px 20px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 0 20px rgba(123, 61, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      cursor: default;
+    }
+
+    .avail-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #a78bfa, #7c3aed);
+      box-shadow: 0 0 10px rgba(167, 139, 250, 0.9);
+    }
+
+    .avail-text {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      font-family: 'Sora', sans-serif;
+      background: linear-gradient(90deg, #c4b5fd, #a78bfa, #ddd6fe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-h1 {
+      font-size: clamp(40px, 8vw, 96px);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 0.95;
+      margin-bottom: 8px;
+      font-family: 'Sora', sans-serif;
+    }
+
+    .h1-first {
+      display: inline-block;
+      background: linear-gradient(90deg, #f0ebff, #c4b5fd, #f0ebff, #e9d5ff, #f0ebff);
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textGradientMove 6s linear infinite;
+    }
+
+    .h1-last {
+      background-image: linear-gradient(135deg, #e9d5ff 0%, #a855f7 40%, #7c3aed 70%, #4c1d95 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.5));
+      display: inline-block;
+    }
+
+    .hero-subtitle-box {
+      font-size: clamp(15px, 2.5vw, 26px);
+      font-weight: 500;
+      font-family: 'Sora', sans-serif;
+      margin-bottom: 6px;
+      min-height: 2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .hero-type-target {
+      background: linear-gradient(90deg, #a78bfa, #e9d5ff, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 0.85em;
+      background: #a78bfa;
+      border-radius: 2px;
+      vertical-align: middle;
+      animation: cursorBlink 0.9s infinite;
+    }
+
+    @keyframes cursorBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .hero-p {
+      max-width: 480px;
+      margin: 14px auto 0;
+      font-size: 15px;
+      line-height: 1.7;
+      font-weight: 300;
+      font-family: 'Sora', sans-serif;
+      background: linear-gradient(180deg, rgba(196, 181, 253, 0.75) 0%, rgba(167, 139, 250, 0.45) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-btn-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      margin-top: 48px;
+      flex-wrap: wrap;
+    }
+
+    .hero-cta-btn {
+      background: #ffffff;
+      border: none;
+      border-radius: 14px;
+      padding: 14px 34px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Sora', sans-serif;
+      letter-spacing: 0.01em;
+      box-shadow: 0 0 25px rgba(167, 139, 250, 0.35);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      text-decoration: none;
+    }
+
+    .hero-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(167, 139, 250, 0.6);
+    }
+
+    .hero-cta-btn span {
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      font-weight: 700;
+    }
+
+    .hero-stats-flex {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 64px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat-col {
+      text-align: center;
+      cursor: default;
+    }
+
+    .hero-stat-num {
+      font-size: clamp(20px, 3vw, 32px);
+      font-weight: 900;
+      font-family: 'Sora', sans-serif;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, #e9d5ff, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-stat-lbl {
+      font-size: 11px;
+      color: rgba(196, 181, 253, 0.55);
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      font-family: 'Sora', sans-serif;
+      margin-top: 4px;
+    }
+
+    .hero-bottom-curtain {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      z-index: 3;
+      background: linear-gradient(to bottom, transparent, #05030e);
+      pointer-events: none;
+    }
+
+    /* ================= Recent Works Section (Work) ================= */
+    #work {
+      padding: 80px 24px;
+      background: var(--bg-secondary);
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .works-card-box {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      padding: 48px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .works-ambient-glow-1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(123, 97, 255, 0.03) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .works-ambient-glow-2 {
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(123, 97, 255, 0.06), transparent 70%);
+      pointer-events: none;
+    }
+
+    .works-title-area {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .works-title-area h2 {
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      line-height: 1.2;
+      color: var(--text-primary);
+      font-family: 'Sora', sans-serif;
+    }
+
+    .works-title-area h2 span {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .works-title-area p {
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.6;
+      max-width: 420px;
+      margin: 0 auto;
+      font-weight: 400;
+      font-family: 'Sora', sans-serif;
+    }
+
+    /* 3D Carousel Stage */
+    .desktop-carousel {
+      position: relative;
+      height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1200px;
+    }
+
+    .carousel-item {
+      position: absolute;
+      width: 290px;
+      aspect-ratio: 9/16;
+      border-radius: 16px;
+      transform-style: preserve-3d;
+      will-change: transform, opacity;
+      cursor: pointer;
+      overflow: hidden;
+      background: #050505;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, box-shadow 0.4s ease, border 0.4s ease;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .carousel-item.center {
+      border-radius: 24px;
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(124, 58, 237, 0.25);
+      cursor: default;
+    }
+
+    .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .carousel-item video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+      z-index: 5;
+      background: #000;
+    }
+
+    .carousel-item.playing video {
+      display: block;
+    }
+
+    .carousel-item.playing .carousel-play-btn,
+    .carousel-item.playing img {
+      display: none;
+    }
+
+    .carousel-dark-mask {
+      position: absolute;
+      inset: 0;
+      background: #000;
+      opacity: 0.65;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .carousel-item.center .carousel-dark-mask {
+      opacity: 0;
+    }
+
+    .carousel-gradient-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent 55%);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .carousel-play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 20;
+    }
+
+    .carousel-play-btn:hover {
+      transform: translate(-50%, -50%) scale(1.15);
+    }
+
+    .play-inner-circle {
+      background: white;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .play-inner-circle svg {
+      margin-left: 3px;
+      fill: #000;
+    }
+
+    .carousel-card-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 12px 16px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 8;
+    }
+
+    .carousel-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .carousel-card-tags {
+      display: flex;
+      gap: 6px;
+      font-size: 11px;
+      color: #c4b5fd;
+    }
+
+    /* Carousel Nav Buttons */
+    .carousel-arrow-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(26, 15, 52, 0.85);
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 30;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .carousel-arrow-btn:hover {
+      background: #7c3aed;
+      border-color: #c084fc;
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+    }
+
+    .arrow-left { left: calc(50% - 240px); }
+    .arrow-right { right: calc(50% - 240px); }
+
+    .carousel-dots-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 32px;
+    }
+
+    .carousel-nav-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .carousel-nav-dot.active {
+      width: 32px;
+      background: #7b61ff;
+    }
+
+    /* Fullscreen Modal */
+    .video-modal-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.94);
+      backdrop-filter: blur(16px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .video-modal-bg.open {
+      display: flex;
+    }
+
+    .video-modal-frame {
+      position: relative;
+      height: 85vh;
+      max-width: 90vw;
+      aspect-ratio: 9/16;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      background: #000;
+    }
+
+    .video-modal-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-modal-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: white;
+      z-index: 1001;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .video-modal-close:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.08);
+    }
+
+    /* ================= About Me Section (Exact CSS) ================= */
+    .about-section {
+      padding: 140px 24px;
+      background: var(--bg-secondary);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .content-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ambient-bg-wrapper {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .ambient-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(50px);
+      will-change: transform;
+    }
+
+    .blob-1 {
+      top: 8%; left: -8%; width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.07) 0%, transparent 70%);
+    }
+
+    .blob-2 {
+      bottom: 12%; right: -4%; width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.07) 0%, transparent 70%);
+    }
+
+    .profile-card {
+      background: linear-gradient(145deg, var(--bg-card), rgba(168, 85, 247, 0.025));
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      padding: 44px;
+      display: flex;
+      align-items: center;
+      gap: 44px;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15), 0 0 24px rgba(168, 85, 247, 0.08);
+    }
+
+    .profile-card-sweep {
+      position: absolute; inset: 0; border-radius: 32px; pointer-events: none;
+      background: linear-gradient(105deg, transparent 40%, rgba(168, 85, 247, 0.07) 50%, transparent 60%);
+      background-size: 200% 100%;
+      animation: shimmerSweep 8s linear infinite;
+    }
+
+    .profile-card-radial {
+      position: absolute; top: -90px; right: -90px; width: 320px; height: 320px; border-radius: 50%; pointer-events: none;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.15), transparent 70%);
+    }
+
+    .profile-photo-wrapper {
+      width: 160px; height: 160px;
+      border-radius: 32px; flex-shrink: 0; z-index: 1;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      background: #1a1a1a;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.03);
+      transform: rotate(-3deg); transition: transform 0.4s ease;
+    }
+
+    .profile-card:hover .profile-photo-wrapper {
+      transform: rotate(0deg) scale(1.02);
+    }
+
+    .profile-photo {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.5s ease;
+      user-select: none;
+      -webkit-user-drag: none;
+      pointer-events: none;
+    }
+
+    .profile-card:hover .profile-photo {
+      transform: scale(1.03);
+    }
+
+    .profile-text-content {
+      position: relative; z-index: 1; flex: 1;
+    }
+
+    .star-icon {
+      display: inline-block; color: #a855f7; filter: drop-shadow(0 0 5px #a855f7);
+      animation: starTwinkle 4s ease-in-out infinite;
+    }
+
+    @keyframes shimmerSweep { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    @keyframes starTwinkle { 0%, 100% { transform: scale(1) rotate(0deg); } 50% { transform: scale(1.2) rotate(15deg); } }
+
+    .about-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      padding: 26px 18px; background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 22px; text-align: center; position: relative; overflow: hidden; cursor: default;
+      transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+      border-color: rgba(168, 85, 247, 0.4);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      transform: translateY(-3px);
+    }
+
+    .stat-card-glow {
+      position: absolute; top: -24px; right: -24px; width: 80px; height: 80px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);
+      transition: opacity 0.35s ease; pointer-events: none;
+    }
+
+    /* Circular Progress Grid */
+    .software-grid {
+      display: flex; gap: 52px; flex-wrap: wrap; justify-content: center;
+    }
+
+    .circular-progress-container {
+      display: flex; flex-direction: column; align-items: center; gap: 14px; cursor: default; position: relative;
+      transition: transform 0.4s ease;
+    }
+
+    .circular-progress-container:hover {
+      transform: translateY(-8px);
+    }
+
+    .icon-wrapper {
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Skills Marquee */
+    .skills-section {
+      margin-top: 8px;
+    }
+
+    .marquee-gradient-overlay {
+      position: absolute; inset: 0; z-index: 2; pointer-events: none;
+      background: linear-gradient(90deg, 
+        var(--bg-secondary) 0%, 
+        rgba(var(--bg-secondary-rgb), 0) 15%, 
+        rgba(var(--bg-secondary-rgb), 0) 85%, 
+        var(--bg-secondary) 100%
+      );
+    }
+
+    .marquee-row {
+      overflow: hidden; display: flex; width: 100%;
+    }
+
+    .marquee-track {
+      display: flex; 
+      gap: 12px; 
+      width: 100%; 
+      justify-content: center;
+      flex-wrap: nowrap;
+    }
+
+    .skill-tag {
+      white-space: nowrap; padding: 11px 26px; border-radius: 100px;
+      font-size: 14px; font-weight: 600; border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.02); color: var(--text-secondary); cursor: default;
+      transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+      display: inline-block;
+    }
+
+    .skill-tag:hover {
+      border-color: rgba(168, 85, 247, 0.5) !important; color: #a855f7 !important;
+      box-shadow: 0 0 16px rgba(168, 85, 247, 0.15);
+    }
+
+    /* ================= FAQ Section ================= */
+    #faq {
+      padding: 120px 24px;
+      background: var(--bg-secondary);
+      position: relative;
+    }
+
+    .faq-container-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .faq-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color 0.25s ease;
+      margin-bottom: 14px;
+    }
+
+    .faq-card.open {
+      border-color: rgba(155, 109, 255, 0.35);
+    }
+
+    .faq-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Geist', sans-serif;
+    }
+
+    .faq-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      transition: color 0.25s ease;
+    }
+
+    .faq-card.open .faq-title {
+      color: var(--accent);
+    }
+
+    .faq-btn-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(120, 100, 220, 0.08);
+      color: var(--accent);
+      transition: transform 0.3s ease, background 0.25s ease;
+      transform: rotate(0deg);
+    }
+
+    .faq-card.open .faq-btn-icon {
+      transform: rotate(45deg);
+      background: rgba(155, 109, 255, 0.15);
+    }
+
+    .faq-content-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .faq-card.open .faq-content-body {
+      max-height: 240px;
+    }
+
+    .faq-content-body p {
+      margin: 0;
+      padding: 0 24px 22px;
+      font-size: 15px;
+      line-height: 1.85;
+      font-weight: 300;
+      color: var(--text-secondary);
+      max-width: 640px;
+    }
+
+    /* ================= Contact Section ================= */
+    #contact {
+      padding: 140px 24px;
+      background: var(--bg-secondary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-ambient-1 {
+      position: absolute; left: -10%; top: 10%; width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(123, 97, 255, 0.14), transparent 70%);
+      filter: blur(80px); pointer-events: none;
+    }
+
+    .contact-ambient-2 {
+      position: absolute; left: 70%; top: 50%; width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(167, 139, 255, 0.09), transparent 70%);
+      filter: blur(80px); pointer-events: none;
+    }
+
+    .cta-card-wrapper {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .glow-ring-rotating {
+      position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: conic-gradient(from 0deg, #7b61ff, #a78bff, #c4b0ff, #9b7fff, #7b61ff);
+      animation: rotateGlow 10s linear infinite;
+    }
+
+    @keyframes rotateGlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .cta-main-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(123, 97, 255, 0.25);
+      border-radius: 36px;
+      padding: clamp(48px, 7vw, 88px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      box-shadow: 0 0 60px rgba(123, 97, 255, 0.08), 0 30px 60px rgba(0, 0, 0, 0.35);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .cta-card-wrapper:hover .cta-main-card {
+      transform: translateY(-4px);
+      box-shadow: 0 0 80px rgba(123, 97, 255, 0.15), 0 40px 80px rgba(0, 0, 0, 0.45);
+    }
+
+    .light-sweep {
+      position: absolute; top: 0; left: 0; width: 40%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(123, 97, 255, 0.08), transparent);
+      animation: shimmerSweepCard 7s linear infinite;
+      pointer-events: none; z-index: 2;
+    }
+
+    @keyframes shimmerSweepCard {
+      0% { transform: translateX(-150%) skewX(-20deg); }
+      100% { transform: translateX(350%) skewX(-20deg); }
+    }
+
+    .availability-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, rgba(123, 97, 255, 0.15), rgba(167, 139, 255, 0.08));
+      border: 1px solid rgba(123, 97, 255, 0.5);
+      border-radius: 100px; padding: 10px 24px; cursor: default;
+      box-shadow: 0 0 20px rgba(123, 97, 255, 0.15);
+    }
+
+    .badge-pulse-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #a78bff;
+      box-shadow: 0 0 10px rgba(167, 139, 255, 0.9);
+      animation: badgePulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.6; }
+    }
+
+    .moving-gradient-text {
+      background: linear-gradient(90deg, #7b61ff, #a78bff, #d4bbff, #9b7fff, #c4b0ff, #7b61ff);
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline;
+      animation: textGradientMove 7s linear infinite;
+    }
+
+    @keyframes textGradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .primary-btn {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #7b61ff, #9b7fff);
+      border-radius: 16px; padding: 14px 26px; color: #fff;
+      font-weight: 700; font-size: 13px; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 9px;
+      font-family: 'Geist', sans-serif;
+      box-shadow: 0 0 32px rgba(123, 97, 255, 0.35), 0 8px 24px rgba(123, 97, 255, 0.15);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 0 40px rgba(123, 97, 255, 0.6), 0 12px 28px rgba(123, 97, 255, 0.3);
+    }
+
+    .primary-btn .btn-shine {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+
+    .primary-btn:hover .btn-shine {
+      transform: translateX(100%);
+    }
+
+    .arrow-icon-animated {
+      display: inline-flex;
+      animation: arrowBounce 1.5s ease-in-out infinite;
+    }
+
+    @keyframes arrowBounce {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(4px); }
+    }
+
+    .social-tag-btn {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 20px; border: 1px solid rgba(123, 97, 255, 0.2);
+      border-radius: 100px; color: rgba(255, 255, 255, 0.55);
+      font-size: 13px; font-weight: 500; text-decoration: none;
+      backdrop-filter: blur(8px); background: rgba(123, 97, 255, 0.05);
+      transition: all 0.25s ease; font-family: 'Geist', sans-serif;
+    }
+
+    .social-tag-btn:hover {
+      transform: scale(1.08);
+      border-color: #7b61ff;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(123, 97, 255, 0.2);
+    }
+
+    /* ================= Footer ================= */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    /* Mobile Adaptations */
+    @media (max-width: 1024px) {
+      .profile-card-sweep { display: none; }
+      .star-icon { animation: none !important; transform: none !important; }
+      .marquee-track { flex-wrap: wrap; justify-content: center; }
+      .marquee-gradient-overlay { display: none; }
+      .ambient-bg-wrapper { display: none; }
+      .about-section { padding: 80px 16px; }
+      .content-container { gap: 48px; }
+      .profile-card { flex-direction: column; text-align: center; padding: 32px 24px; gap: 24px; }
+      .profile-photo-wrapper { width: 110px; height: 110px; border-radius: 24px; }
+      .software-grid { gap: 24px; }
+      .arrow-left { left: 10px; }
+      .arrow-right { right: 10px; }
+    }
+
+    @media (max-width: 768px) {
+      .about-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .stat-card { padding: 20px 14px; }
+      .carousel-item { width: 260px; }
+      .desktop-carousel { height: 480px; }
+    }
+  
+    /* ================= Hero Creator Avatar Badge ================= */
+    .hero-creator-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 8px 18px 8px 10px;
+      background: rgba(18, 10, 36, 0.7);
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      border-radius: 100px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 15px rgba(168, 85, 247, 0.15);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .hero-creator-badge:hover {
+      transform: translateY(-2px);
+      border-color: rgba(167, 139, 250, 0.6);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 25px rgba(168, 85, 247, 0.25);
+    }
+
+    .hero-avatar-ring {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      padding: 2px;
+      background: linear-gradient(135deg, #a855f7, #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      background: #1a0533;
+    }
+
+    .hero-avatar-info {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .hero-avatar-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-avatar-status {
+      font-size: 11px;
+      font-weight: 500;
+      color: #c084fc;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 8px #22c55e;
+      animation: pulseGreen 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseGreen {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.6; }
+    }
+
+    /* ================= Filter Tabs & Portfolio Gallery ================= */
+    .gallery-header-area {
+      margin-top: 60px;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .gallery-h3 {
+      font-size: clamp(24px, 3.2vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .gallery-h3 span {
+      background: linear-gradient(135deg, #c084fc, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gallery-sub {
+      color: var(--text-secondary);
+      font-size: clamp(14px, 1.6vw, 16px);
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+
+    .filter-tabs-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+      padding: 0 10px;
+    }
+
+    .filter-tab-btn {
+      background: rgba(18, 10, 36, 0.7);
+      border: 1px solid rgba(167, 139, 250, 0.2);
+      color: rgba(226, 232, 240, 0.75);
+      padding: 10px 18px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .filter-tab-btn:hover {
+      border-color: rgba(167, 139, 250, 0.5);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .filter-tab-btn.active {
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      border-color: #a855f7;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.35);
+    }
+
+    .tab-badge {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 2px 7px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* ================= Portfolio Grid ================= */
+    .portfolio-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      max-width: 1280px;
+      margin: 0 auto 80px;
+      padding: 0 20px;
+      width: 100%;
+    }
+
+    @media (max-width: 640px) {
+      .portfolio-grid {
+        padding: 0 16px;
+        gap: 36px;
+      }
+      .pillar-cards-grid.grid-16-9,
+      .pillar-cards-grid.grid-9-14 {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    .gallery-pillar-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .gallery-pillar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .gallery-pillar-count {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: rgba(196, 181, 253, 0.85);
+      background: rgba(168, 85, 247, 0.12);
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      letter-spacing: 0.02em;
+    }
+
+    .work-card {
+      background: rgba(18, 10, 36, 0.65);
+      border: 1px solid rgba(167, 139, 250, 0.16);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .work-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(167, 139, 250, 0.5);
+      box-shadow: 0 20px 40px -15px rgba(168, 85, 247, 0.25);
+    }
+
+    .work-card-media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #080414;
+      overflow: hidden;
+    }
+
+    .work-card-media.vertical {
+      aspect-ratio: 9 / 13;
+    }
+
+    .work-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .work-card:hover .work-card-media img {
+      transform: scale(1.05);
+    }
+
+    .work-card-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(8, 4, 20, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    .work-card-duration {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #f1f5f9;
+      z-index: 2;
+    }
+
+    .work-play-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(5, 3, 14, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 3;
+    }
+
+    .work-card:hover .work-play-overlay {
+      opacity: 1;
+    }
+
+    .work-play-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgba(168, 85, 247, 0.6);
+      transform: scale(0.85);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .work-card:hover .work-play-btn {
+      transform: scale(1);
+    }
+
+    .work-card-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .work-card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .work-card-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .work-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .work-tag-pill {
+      font-size: 11px;
+      font-weight: 600;
+      color: #c084fc;
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    /* ================= Carousel Lightbox Modal ================= */
+    .carousel-lightbox-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 1, 10, 0.92);
+      backdrop-filter: blur(16px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+      padding: 20px;
+    }
+
+    .carousel-lightbox-bg.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .carousel-lightbox-frame {
+      max-width: 750px;
+      width: 100%;
+      background: #0d061c;
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(168, 85, 247, 0.2);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .carousel-lightbox-header {
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .carousel-lightbox-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .carousel-lightbox-counter {
+      font-size: 13px;
+      font-weight: 600;
+      color: #c084fc;
+      background: rgba(168, 85, 247, 0.15);
+      padding: 4px 10px;
+      border-radius: 50px;
+    }
+
+    .carousel-lightbox-img-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      max-height: 60vh;
+      background: #05020a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .carousel-lightbox-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .carousel-lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(18, 10, 36, 0.85);
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.2s ease;
+      z-index: 5;
+      backdrop-filter: blur(8px);
+    }
+
+    .carousel-lightbox-nav:hover {
+      background: #7c3aed;
+      border-color: #a855f7;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .carousel-lightbox-nav.prev { left: 16px; }
+    .carousel-lightbox-nav.next { right: 16px; }
+
+    .carousel-lightbox-strip {
+      display: flex;
+      gap: 8px;
+      padding: 14px 20px;
+      background: #080414;
+      overflow-x: auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .carousel-strip-thumb {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      object-fit: cover;
+      cursor: pointer;
+      opacity: 0.5;
+      border: 2px solid transparent;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .carousel-strip-thumb.active {
+      opacity: 1;
+      border-color: #a855f7;
+      box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+    }
+
+
+    /* ================= DEDICATED 16:9 WIDESCREEN PLAYER MODAL ================= */
+    .video-modal-frame.widescreen-16-9 {
+      aspect-ratio: 16 / 9 !important;
+      width: 92vw !important;
+      max-width: 1140px !important;
+      height: auto !important;
+      max-height: 85vh !important;
+      border-radius: 18px !important;
+      box-shadow: 0 35px 70px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(239, 68, 68, 0.35) !important;
+    }
+    .video-modal-frame.widescreen-16-9 video {
+      object-fit: contain !important;
+      background: #000;
+    }
+
+    /* ================= DEDICATED 16:9 YOUTUBE SHOWCASE ROW ================= */
+    .youtube-showcase-container {
+      margin: 48px 0 40px 0;
+      padding: 36px 32px;
+      background: linear-gradient(180deg, rgba(239, 68, 68, 0.06) 0%, rgba(15, 8, 30, 0.65) 100%);
+      border: 1px solid rgba(239, 68, 68, 0.22);
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+    .youtube-showcase-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #ef4444, #f97316, transparent);
+    }
+    .youtube-badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 16px;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #fca5a5;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .pulse-red-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: #ef4444;
+      box-shadow: 0 0 12px #ef4444;
+      animation: pulse-dot 1.8s infinite;
+    }
+    @keyframes pulse-dot {
+      0% { transform: scale(0.9); opacity: 0.7; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(0.9); opacity: 0.7; }
+    }
+    .youtube-h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .youtube-h3 span {
+      background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .youtube-sub {
+      font-size: 0.95rem;
+      color: rgba(226, 232, 240, 0.75);
+      max-width: 780px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    .youtube-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 22px;
+    }
+    .yt-widescreen-card {
+      background: rgba(18, 10, 36, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .yt-widescreen-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(239, 68, 68, 0.55);
+      box-shadow: 0 16px 36px rgba(239, 68, 68, 0.2), 0 0 0 1px rgba(239, 68, 68, 0.3);
+    }
+    .yt-widescreen-media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #080414;
+      overflow: hidden;
+    }
+    .yt-widescreen-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .yt-widescreen-card:hover .yt-widescreen-media img {
+      transform: scale(1.06);
+    }
+    .yt-duration-badge {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.03em;
+    }
+    .yt-res-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(239, 68, 68, 0.92);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+    .yt-play-btn-hover {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.38);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .yt-widescreen-card:hover .yt-play-btn-hover {
+      opacity: 1;
+    }
+    .yt-play-icon-box {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #ef4444;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 26px rgba(239, 68, 68, 0.65);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+    .yt-widescreen-card:hover .yt-play-icon-box {
+      transform: scale(1.08);
+    }
+    .yt-card-content {
+      padding: 18px 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+    .yt-card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #f8fafc;
+      line-height: 1.35;
+    }
+    .yt-card-sub {
+      font-size: 0.82rem;
+      color: rgba(226, 232, 240, 0.7);
+      line-height: 1.4;
+    }
+    .yt-card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .yt-tag-pill {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(226, 232, 240, 0.75);
+    }
+    
+    .yt-format-pill {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #c4b5fd;
+      background: rgba(167, 139, 250, 0.12);
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(167, 139, 250, 0.25);
+    }
+    .work-card-media.aspect-16-9 { aspect-ratio: 16 / 9; }
+    .work-card-media.aspect-9-14 { aspect-ratio: 9 / 14; }
+    .work-card-media.aspect-square { aspect-ratio: 1 / 1; }
+    .work-card-meta-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .yt-views-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #f87171;
+    }
+
+  
+    /* ================= DEDICATED INSTAGRAM REELS SHOWCASE ROW ================= */
+    .reels-showcase-container {
+      margin: 48px 0 40px 0;
+      padding: 36px 32px;
+      background: linear-gradient(180deg, rgba(168, 85, 247, 0.06) 0%, rgba(15, 8, 30, 0.65) 100%);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+    .reels-showcase-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #a855f7, #ec4899, transparent);
+    }
+    .reels-badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 16px;
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #e9d5ff;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .pulse-purple-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: #a855f7;
+      box-shadow: 0 0 12px #a855f7;
+      animation: pulse-dot 1.8s infinite;
+    }
+    .reels-h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .reels-h3 span {
+      background: linear-gradient(135deg, #c084fc 0%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .reels-sub {
+      font-size: 0.95rem;
+      color: rgba(226, 232, 240, 0.75);
+      max-width: 780px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    .reels-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 22px;
+    }
+
+    /* ================= DEDICATED GRAPHIC DESIGN SHOWCASE ROW ================= */
+    .graphics-showcase-container {
+      margin: 48px 0 40px 0;
+      padding: 36px 32px;
+      background: linear-gradient(180deg, rgba(16, 185, 129, 0.06) 0%, rgba(15, 8, 30, 0.65) 100%);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+    .graphics-showcase-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #10b981, #06b6d4, transparent);
+    }
+    .graphics-badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 16px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #a7f3d0;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .pulse-emerald-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: #10b981;
+      box-shadow: 0 0 12px #10b981;
+      animation: pulse-dot 1.8s infinite;
+    }
+    .graphics-h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .graphics-h3 span {
+      background: linear-gradient(135deg, #34d399 0%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .graphics-sub {
+      font-size: 0.95rem;
+      color: rgba(226, 232, 240, 0.75);
+      max-width: 780px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    .graphics-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 22px;
+    }
+
+    /* Universal Card Style matching YouTube Card */
+    .showcase-card {
+      background: rgba(18, 10, 36, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .showcase-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    }
+    .showcase-card.reel-card:hover {
+      border-color: rgba(168, 85, 247, 0.55);
+      box-shadow: 0 16px 36px rgba(168, 85, 247, 0.25), 0 0 0 1px rgba(168, 85, 247, 0.3);
+    }
+    .showcase-card.graphic-card:hover {
+      border-color: rgba(16, 185, 129, 0.55);
+      box-shadow: 0 16px 36px rgba(16, 185, 129, 0.25), 0 0 0 1px rgba(16, 185, 129, 0.3);
+    }
+    .showcase-media {
+      position: relative;
+      width: 100%;
+      background: #080414;
+      overflow: hidden;
+    }
+    .showcase-media.vertical-reel {
+      aspect-ratio: 9 / 13;
+    }
+    .showcase-media.square-deck {
+      aspect-ratio: 1 / 1;
+    }
+    .showcase-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .showcase-card:hover .showcase-media img {
+      transform: scale(1.06);
+    }
+    .showcase-res-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+    .showcase-card.reel-card .showcase-res-badge {
+      background: rgba(168, 85, 247, 0.92);
+    }
+    .showcase-card.graphic-card .showcase-res-badge {
+      background: rgba(16, 185, 129, 0.92);
+    }
+    .showcase-duration-badge {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.03em;
+    }
+    .showcase-play-hover {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.38);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .showcase-card:hover .showcase-play-hover {
+      opacity: 1;
+    }
+    .showcase-play-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+    .showcase-card.reel-card .showcase-play-icon {
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      box-shadow: 0 0 26px rgba(168, 85, 247, 0.65);
+    }
+    .showcase-card.graphic-card .showcase-play-icon {
+      background: linear-gradient(135deg, #059669, #10b981);
+      box-shadow: 0 0 26px rgba(16, 185, 129, 0.65);
+    }
+    .showcase-card:hover .showcase-play-icon {
+      transform: scale(1.08);
+    }
+    .showcase-content {
+      padding: 18px 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+    .showcase-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #f8fafc;
+      line-height: 1.35;
+    }
+    .showcase-sub {
+      font-size: 0.82rem;
+      color: rgba(226, 232, 240, 0.7);
+      line-height: 1.4;
+    }
+    .showcase-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+  
+    /* ================= 3 PILLARS SHOWCASE CONTAINERS (YouTube, Premium Motion, Talking Heads) ================= */
+    .showcase-pillar-container {
+      margin: 48px 0 40px 0;
+      padding: 36px 32px;
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .showcase-pillar-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+    
+    /* Pillar 1: YouTube Red Theme */
+    .pillar-youtube {
+      background: linear-gradient(180deg, rgba(239, 68, 68, 0.06) 0%, rgba(15, 8, 30, 0.65) 100%);
+      border: 1px solid rgba(239, 68, 68, 0.22);
+    }
+    .pillar-youtube::before {
+      background: linear-gradient(90deg, transparent, #ef4444, #f97316, transparent);
+    }
+    .badge-youtube {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #fca5a5;
+    }
+    .h3-youtube span {
+      background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Pillar 2: Premium Motion Amber Theme */
+    .pillar-motion {
+      background: linear-gradient(180deg, rgba(234, 179, 8, 0.06) 0%, rgba(15, 8, 30, 0.65) 100%);
+      border: 1px solid rgba(234, 179, 8, 0.25);
+    }
+    .pillar-motion::before {
+      background: linear-gradient(90deg, transparent, #eab308, #f59e0b, transparent);
+    }
+    .badge-motion {
+      background: rgba(234, 179, 8, 0.12);
+      border: 1px solid rgba(234, 179, 8, 0.35);
+      color: #fde047;
+    }
+    .h3-motion span {
+      background: linear-gradient(135deg, #fde047 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .pulse-amber-dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      background-color: #eab308; box-shadow: 0 0 12px #eab308;
+      animation: pulse-dot 1.8s infinite;
+    }
+
+    /* Pillar 3: Talking Heads Purple Theme */
+    .pillar-talking {
+      background: linear-gradient(180deg, rgba(168, 85, 247, 0.06) 0%, rgba(15, 8, 30, 0.65) 100%);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+    }
+    .pillar-talking::before {
+      background: linear-gradient(90deg, transparent, #a855f7, #ec4899, transparent);
+    }
+    .badge-talking {
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      color: #e9d5ff;
+    }
+    .h3-talking span {
+      background: linear-gradient(135deg, #c084fc 0%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .pulse-purple-dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      background-color: #a855f7; box-shadow: 0 0 12px #a855f7;
+      animation: pulse-dot 1.8s infinite;
+    }
+
+    /* Common Pillar Header Styles */
+    .pillar-badge-tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 6px 16px; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .pillar-h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem; font-weight: 800;
+      color: #fff; margin-bottom: 8px;
+    }
+    .pillar-sub {
+      font-size: 0.95rem; color: rgba(226, 232, 240, 0.75);
+      max-width: 780px; margin-bottom: 30px; line-height: 1.6;
+    }
+
+    /* Grid Layouts */
+    .pillar-cards-grid {
+      display: grid;
+      gap: 22px;
+      align-items: start;
+    }
+    .pillar-cards-grid.grid-16-9 {
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    }
+    .pillar-cards-grid.grid-9-14 {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    /* Pillar Cards */
+    .pillar-card {
+      background: rgba(18, 10, 36, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .pillar-card:hover {
+      transform: translateY(-6px);
+    }
+    .pillar-card.yt-card:hover {
+      border-color: rgba(239, 68, 68, 0.55);
+      box-shadow: 0 16px 36px rgba(239, 68, 68, 0.2), 0 0 0 1px rgba(239, 68, 68, 0.3);
+    }
+    .pillar-card.motion-card:hover {
+      border-color: rgba(234, 179, 8, 0.55);
+      box-shadow: 0 16px 36px rgba(234, 179, 8, 0.2), 0 0 0 1px rgba(234, 179, 8, 0.3);
+    }
+    .pillar-card.th-card:hover {
+      border-color: rgba(168, 85, 247, 0.55);
+      box-shadow: 0 16px 36px rgba(168, 85, 247, 0.2), 0 0 0 1px rgba(168, 85, 247, 0.3);
+    }
+    .pillar-media {
+      position: relative; width: 100%;
+      background: #080414; overflow: hidden;
+    }
+    .pillar-media.widescreen-16-9 { aspect-ratio: 16 / 9; }
+    .pillar-media.vertical-9-14 { aspect-ratio: 9 / 13.5; }
+    .pillar-media img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .pillar-card:hover .pillar-media img {
+      transform: scale(1.06);
+    }
+    .res-badge {
+      position: absolute; top: 10px; left: 10px;
+      color: #fff; font-size: 0.7rem; font-weight: 800;
+      padding: 3px 8px; border-radius: 6px;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+    .res-yt { background: rgba(239, 68, 68, 0.92); }
+    .res-motion { background: rgba(234, 179, 8, 0.92); color: #000; font-weight: 900; }
+    .res-th { background: rgba(168, 85, 247, 0.92); }
+
+    .pillar-duration-badge {
+      position: absolute; bottom: 10px; right: 10px;
+      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff; font-size: 0.75rem; font-weight: 700;
+      padding: 3px 8px; border-radius: 6px; letter-spacing: 0.03em;
+    }
+    .pillar-play-hover {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0, 0, 0, 0.38);
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    .pillar-card:hover .pillar-play-hover { opacity: 1; }
+    .play-box {
+      width: 54px; height: 54px; border-radius: 50%;
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      transform: scale(0.9); transition: transform 0.3s ease;
+    }
+    .play-yt { background: #ef4444; box-shadow: 0 0 26px rgba(239, 68, 68, 0.65); }
+    .play-motion { background: linear-gradient(135deg, #eab308, #f59e0b); color: #000; box-shadow: 0 0 26px rgba(234, 179, 8, 0.65); }
+    .play-th { background: linear-gradient(135deg, #7c3aed, #a855f7); box-shadow: 0 0 26px rgba(168, 85, 247, 0.65); }
+    .pillar-card:hover .play-box { transform: scale(1.08); }
+
+    .pillar-card-content {
+      padding: 18px 20px 22px; display: flex;
+      flex-direction: column; gap: 8px; flex: 1;
+    }
+    .pillar-card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem; font-weight: 700;
+      color: #f8fafc; line-height: 1.35;
+    }
+    .pillar-card-sub {
+      font-size: 0.82rem; color: rgba(226, 232, 240, 0.7);
+      line-height: 1.4;
+    }
+    .pillar-card-meta {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: auto; padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .pillar-tag-pill {
+      font-size: 0.7rem; font-weight: 600; padding: 3px 8px;
+      border-radius: 6px; background: rgba(255, 255, 255, 0.05);
+      color: rgba(226, 232, 240, 0.75);
+    }
+    .pillar-format-pill {
+      font-size: 0.72rem; font-weight: 600; padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .pillar-format-yt { color: #fca5a5; background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.25); }
+    .pillar-format-motion { color: #fde047; background: rgba(234, 179, 8, 0.12); border: 1px solid rgba(234, 179, 8, 0.25); }
+    .pillar-format-th { color: #e9d5ff; background: rgba(168, 85, 247, 0.12); border: 1px solid rgba(168, 85, 247, 0.25); }
+
+  
+    /* ================= NAVBAR ORDER NOW BUTTON ================= */
+    .nav-pill-order-btn {
+      background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+      color: #ffffff !important;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      padding: 8px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 0 18px rgba(168, 85, 247, 0.45), 0 4px 12px rgba(124, 58, 237, 0.3);
+      display: inline-flex;
+      align-items: center;
+      margin-left: 6px;
+      border: 1px solid rgba(192, 132, 252, 0.3);
+    }
+    .nav-pill-order-btn:hover {
+      background: linear-gradient(135deg, #8b5cf6 0%, #c084fc 100%);
+      transform: translateY(-1px) scale(1.04);
+      box-shadow: 0 0 28px rgba(168, 85, 247, 0.75), 0 6px 18px rgba(124, 58, 237, 0.4);
+    }
+
+    /* ================= GET IN TOUCH & QUICK ORDER SECTION (SIGNATURE THEME) ================= */
+    .quick-order-section {
+      position: relative;
+      padding: 100px 24px 120px;
+      background: #05020c;
+      border-top: 1px solid rgba(167, 139, 250, 0.18);
+      overflow: hidden;
+    }
+    .quick-order-ambient-glow {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.16) 0%, rgba(168, 85, 247, 0.05) 50%, transparent 70%);
+      top: 15%;
+      right: 5%;
+      filter: blur(90px);
+      pointer-events: none;
+    }
+    .quick-order-container {
+      max-width: 1220px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 56px;
+      align-items: start;
+      position: relative;
+      z-index: 2;
+    }
+    @media (max-width: 960px) {
+      .quick-order-container {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+    }
+
+    /* Left Column: Get In Touch */
+    .touch-tag {
+      font-size: 13px;
+      font-weight: 800;
+      color: #c084fc;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      font-family: 'Syne', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .outline-headline-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 24px;
+    }
+    .outline-stroke-text {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(48px, 6.2vw, 84px);
+      font-weight: 900;
+      line-height: 0.92;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(168, 85, 247, 0.85);
+      letter-spacing: -0.02em;
+      filter: drop-shadow(0 0 25px rgba(168, 85, 247, 0.25));
+    }
+    .solid-white-text {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(54px, 7.2vw, 102px);
+      font-weight: 900;
+      line-height: 0.92;
+      color: #ffffff;
+      letter-spacing: -0.03em;
+      text-shadow: 0 0 35px rgba(255, 255, 255, 0.25);
+    }
+    .touch-sub {
+      color: rgba(226, 232, 240, 0.72);
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 36px;
+      font-weight: 300;
+    }
+
+    /* Contact Cards Stack */
+    .contact-cards-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 480px;
+    }
+    .contact-row-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: rgba(18, 10, 36, 0.65);
+      border: 1px solid rgba(167, 139, 250, 0.16);
+      border-radius: 14px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(10px);
+    }
+    .contact-row-card:hover {
+      background: rgba(26, 14, 52, 0.9);
+      border-color: rgba(168, 85, 247, 0.55);
+      transform: translateX(6px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), 0 0 25px rgba(168, 85, 247, 0.22);
+    }
+    .contact-card-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .icon-wa { color: #22c55e; background: rgba(34, 197, 94, 0.1); border-color: rgba(34, 197, 94, 0.2); }
+    .icon-phone { color: #38bdf8; background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.2); }
+    .icon-mail { color: #c084fc; background: rgba(168, 85, 247, 0.12); border-color: rgba(168, 85, 247, 0.25); }
+    .icon-insta { color: #f472b6; background: rgba(236, 72, 153, 0.1); border-color: rgba(236, 72, 153, 0.2); }
+    .contact-card-info {
+      flex: 1;
+    }
+    .contact-card-lbl {
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(196, 181, 253, 0.55);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .contact-card-val {
+      font-size: 14px;
+      font-weight: 700;
+      color: #f8fafc;
+      letter-spacing: 0.01em;
+    }
+    .contact-card-arrow {
+      color: rgba(196, 181, 253, 0.4);
+      display: flex;
+      align-items: center;
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
+    .contact-row-card:hover .contact-card-arrow {
+      color: #c084fc;
+      transform: translateX(4px);
+    }
+
+    /* Right Column: Quick Order Card */
+    .quick-order-box {
+      background: rgba(18, 10, 36, 0.85);
+      border: 1px solid rgba(167, 139, 250, 0.28);
+      border-radius: 20px;
+      padding: 36px 32px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(168, 85, 247, 0.12);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+    }
+    .quick-order-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #7c3aed, #a855f7, #c084fc, #7c3aed);
+    }
+    .quick-order-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff 0%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .order-inputs-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 540px) {
+      .order-inputs-grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+    .order-field-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 18px;
+    }
+    .order-field-label {
+      font-size: 10px;
+      font-weight: 800;
+      color: rgba(196, 181, 253, 0.65);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .order-field-input,
+    .order-field-select,
+    .order-field-textarea {
+      width: 100%;
+      background: rgba(8, 4, 18, 0.85);
+      border: 1px solid rgba(167, 139, 250, 0.2);
+      border-radius: 10px;
+      padding: 13px 16px;
+      color: #ffffff;
+      font-size: 13px;
+      font-family: 'Sora', sans-serif;
+      outline: none;
+      transition: all 0.25s ease;
+      box-sizing: border-box;
+    }
+    .order-field-input::placeholder,
+    .order-field-textarea::placeholder {
+      color: rgba(196, 181, 253, 0.3);
+    }
+    .order-field-input:focus,
+    .order-field-select:focus,
+    .order-field-textarea:focus {
+      border-color: #a855f7;
+      box-shadow: 0 0 18px rgba(168, 85, 247, 0.35);
+      background: rgba(18, 10, 36, 0.95);
+    }
+    .order-field-select {
+      cursor: pointer;
+    }
+    .order-field-select option {
+      background: #0f071e;
+      color: #ffffff;
+    }
+    .order-field-textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .order-submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+      border: 1px solid rgba(192, 132, 252, 0.35);
+      border-radius: 12px;
+      padding: 16px 24px;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4), 0 0 20px rgba(168, 85, 247, 0.25);
+    }
+    .order-submit-btn:hover {
+      background: linear-gradient(135deg, #8b5cf6 0%, #c084fc 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(168, 85, 247, 0.65), 0 0 35px rgba(192, 132, 252, 0.4);
+    }
+    .order-btn-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    /* Floating WhatsApp Chat Bubble */
+    .floating-wa-bubble {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 10px 30px rgba(34, 197, 94, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      animation: floatPulse 3s ease-in-out infinite;
+    }
+    .floating-wa-bubble:hover {
+      transform: scale(1.12);
+      box-shadow: 0 15px 35px rgba(34, 197, 94, 0.7);
+    }
+    @keyframes floatPulse {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <div class="navbar-wrapper">
+    <div class="nav-logo-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Nishant Jain">
+      <img src="profile.jpeg" alt="Logo" />
+    </div>
+
+    <nav class="navbar-pill">
+      <a href="#home" class="nav-pill-btn active">
+        <div class="active-dot"></div>
+        <span>Home</span>
+      </a>
+      <a href="#work" class="nav-pill-btn">
+        <div class="active-dot"></div>
+        <span>Projects</span>
+      </a>
+      <a href="#about" class="nav-pill-btn">
+        <div class="active-dot"></div>
+        <span>About Me</span>
+      </a>
+      <a href="#faq" class="nav-pill-btn">
+        <div class="active-dot"></div>
+        <span>FAQ</span>
+      </a>
+      <a href="#contact" class="nav-pill-contact-btn">
+        Contact
+      </a>
+      <a href="#quick-order" class="nav-pill-order-btn">
+        ORDER NOW →
+      </a>
+    </nav>
+  </div>
+
+
+  <!-- ================= FULLSCREEN VIDEO MODAL ================= -->
+  <div class="video-modal-bg" id="videoModal" onclick="closeModal(event)">
+    <button class="video-modal-close" onclick="closeModalForce()">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <div class="video-modal-frame" onclick="event.stopPropagation()">
+      <video id="modalVideo" controls autoplay playsinline></video>
+    </div>
+  </div>
+
+
+  <!-- ================= CAROUSEL LIGHTBOX MODAL ================= -->
+  <div class="carousel-lightbox-bg" id="carouselLightbox" onclick="closeCarouselModal(event)">
+    <button class="video-modal-close" onclick="closeCarouselModalForce()" title="Close Lightbox">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <div class="carousel-lightbox-frame" onclick="event.stopPropagation()">
+      <div class="carousel-lightbox-header">
+        <div id="carouselLightboxTitle" class="carousel-lightbox-title">Graphic Deck</div>
+        <div id="carouselLightboxCounter" class="carousel-lightbox-counter">1 / 10</div>
+      </div>
+      <div class="carousel-lightbox-img-wrap">
+        <button class="carousel-lightbox-nav prev" onclick="prevCarouselSlide()">❮</button>
+        <img id="carouselLightboxImg" src="" alt="Slide Preview" />
+        <button class="carousel-lightbox-nav next" onclick="nextCarouselSlide()">❯</button>
+      </div>
+      <div class="carousel-lightbox-strip" id="carouselLightboxStrip"></div>
+    </div>
+  </div>
+
+
+  <main>
+    <!-- ================= HERO SECTION ================= -->
+    <section id="home" class="hero-section">
+      <canvas id="heroCanvas"></canvas>
+      <div class="hero-light-beam"></div>
+      <div class="hero-vignette"></div>
+
+      <div class="hero-cosmic-rings">
+        <div class="hero-ring-1"><div class="hero-ring-1-dot"></div></div>
+        <div class="hero-ring-2"><div class="hero-ring-2-dot"></div></div>
+        <div class="hero-ring-3"></div>
+      </div>
+
+      <div class="hero-center-glow"></div>
+
+      <div class="hero-container">
+
+        <!-- Nishant Jain Creator Avatar Badge -->
+        <div class="hero-creator-badge">
+          <div class="hero-avatar-ring">
+            <img src="profile.jpeg" onerror="this.src='../profile.jpeg'" alt="Nishant Jain" class="hero-avatar-img" />
+          </div>
+          <div class="hero-avatar-info">
+            <div class="hero-avatar-name">Nishant Jain</div>
+            <div class="hero-avatar-status"><span class="pulse-dot"></span> Senior Editor & Visual Designer</div>
+          </div>
+        </div>
+
+        <!-- Available Badge -->
+        <div class="avail-badge-wrap">
+          <div class="avail-badge">
+            <div class="avail-dot"></div>
+            <span class="avail-text">AVAILABLE FOR FREELANCE</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg>
+          </div>
+        </div>
+
+        <!-- Title -->
+        <h1 class="hero-h1">
+          <span class="h1-first">Nishant</span> <span class="h1-last">Jain</span>
+        </h1>
+
+        <!-- Typewriter Subtitle -->
+        <div class="hero-subtitle-box">
+          <span class="hero-type-target" id="typewriterTarget"></span>
+          <span class="hero-cursor"></span>
+        </div>
+
+        <!-- Description -->
+        <p class="hero-p">
+          Turning raw footage into compelling cinematic experiences.
+        </p>
+
+        <!-- CTA Button -->
+        <div class="hero-btn-row">
+          <a href="https://wa.me/919468993588?text=Hi%20Nishant,%20let's%20work%20together!" target="_blank" class="hero-cta-btn">
+            <span>Let's work together</span>
+          </a>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="hero-stats-flex">
+          <div class="hero-stat-col">
+            <div class="hero-stat-num">120+</div>
+            <div class="hero-stat-lbl">Projects Done</div>
+          </div>
+          <div class="hero-stat-col">
+            <div class="hero-stat-num">4yr</div>
+            <div class="hero-stat-lbl">Experience</div>
+          </div>
+          <div class="hero-stat-col">
+            <div class="hero-stat-num">98%</div>
+            <div class="hero-stat-lbl">Satisfaction</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-bottom-curtain"></div>
+    </section>
+
+
+    <!-- ================= RECENT WORKS & CLIENT SHOWCASE ================= -->
+    <section id="work">
+      <div class="works-card-box">
+        <div class="works-ambient-glow-1"></div>
+        <div class="works-ambient-glow-2"></div>
+
+        <div class="works-title-area">
+          <h2>Featured <span>Real Estate & Motion Edits</span></h2>
+          <p>Handcrafted commercial property showcases, luxury walkthroughs, and architectural motion design</p>
+        </div>
+
+        <!-- 3D Carousel Viewport -->
+        <div class="desktop-carousel" id="desktopCarousel">
+          <button class="carousel-arrow-btn arrow-left" onclick="rotateSlide(-1)" title="Previous">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+
+          <div id="carouselItemsWrapper" style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;"></div>
+
+          <button class="carousel-arrow-btn arrow-right" onclick="rotateSlide(1)" title="Next">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+
+        <!-- Dot Indicators -->
+        
+        <!-- Dot Indicators -->
+        <div class="carousel-dots-wrap" id="carouselDots"></div>
+
+                <!-- ================= PILLAR 1: YOUTUBE & LONG-FORM CINEMA (16:9) ================= -->
+        <div class="showcase-pillar-container pillar-youtube" id="youtube-cinema">
+          <div class="pillar-badge-tag badge-youtube">
+            <span class="pulse-red-dot"></span> 📺 YOUTUBE & LONG-FORM CINEMA (16:9 WIDESCREEN)
+          </div>
+          <h3 class="pillar-h3 h3-youtube">YouTube Long-Form & <span>16:9 Cinema Productions</span></h3>
+          <p class="pillar-sub">Documentary storytelling, educational explainers, SaaS product UI motion graphics, and high-retention masterclasses designed exclusively for 16:9 widescreen viewing. Click any project to open in pristine 16:9 cinema format.</p>
+
+          <div class="pillar-cards-grid grid-16-9">
+            <div class="pillar-card yt-card" onclick="openFullscreenVideo(event, 'youtube_16_9/01_Creator_Productivity_Systems_1080p.mp4', true)">
+              <div class="pillar-media widescreen-16-9">
+                <img src="youtube_16_9/thumbnails/01_Creator_Productivity_Systems_1080p.jpg" alt="Systems vs Goals - High-Retention Creator Masterclass" loading="lazy" onerror="this.src='profile.jpeg'" />
+                <span class="res-badge res-yt">1080p FHD Cinema</span>
+                <span class="pillar-duration-badge">00:43</span>
+                <div class="pillar-play-hover">
+                  <div class="play-box play-yt">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="pillar-card-content">
+                <div class="pillar-card-title">Systems vs Goals - High-Retention Creator Masterclass</div>
+                <div class="pillar-card-sub">Talking Head Masterclass & Motion Overlays</div>
+                <div class="pillar-card-meta">
+                  <span class="pillar-tag-pill">Talking Head Masterclass</span>
+                  <span class="pillar-format-pill pillar-format-yt">16:9 Cinema</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pillar-card yt-card" onclick="openFullscreenVideo(event, 'youtube_16_9/02_Indian_Household_Wealth_Explainer_720p.mp4', true)">
+              <div class="pillar-media widescreen-16-9">
+                <img src="youtube_16_9/thumbnails/02_Indian_Household_Wealth_Explainer_720p.jpg" alt="Indian Household Wealth - 3D Motion Track Documentary" loading="lazy" onerror="this.src='profile.jpeg'" />
+                <span class="res-badge res-yt">720p HD Cinema</span>
+                <span class="pillar-duration-badge">01:42</span>
+                <div class="pillar-play-hover">
+                  <div class="play-box play-yt">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="pillar-card-content">
+                <div class="pillar-card-title">Indian Household Wealth - 3D Motion Track Documentary</div>
+                <div class="pillar-card-sub">Documentary Storytelling & Camera Tracking</div>
+                <div class="pillar-card-meta">
+                  <span class="pillar-tag-pill">3D Camera Tracking</span>
+                  <span class="pillar-format-pill pillar-format-yt">16:9 Cinema</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pillar-card yt-card" onclick="openFullscreenVideo(event, 'youtube_16_9/03_Bauhaus_Design_Clean_Shapes_720p.mp4', true)">
+              <div class="pillar-media widescreen-16-9">
+                <img src="youtube_16_9/thumbnails/03_Bauhaus_Design_Clean_Shapes_720p.jpg" alt="Clean Shapes & Bauhaus Aesthetic - Design Motion Explainer" loading="lazy" onerror="this.src='profile.jpeg'" />
+                <span class="res-badge res-yt">720p HD</span>
+                <span class="pillar-duration-badge">00:30</span>
+                <div class="pillar-play-hover">
+                  <div class="play-box play-yt">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="pillar-card-content">
+                <div class="pillar-card-title">Clean Shapes & Bauhaus Aesthetic - Design Motion Explainer</div>
+                <div class="pillar-card-sub">Kinetic Typography & Aesthetic Motion</div>
+                <div class="pillar-card-meta">
+                  <span class="pillar-tag-pill">Bauhaus Motion</span>
+                  <span class="pillar-format-pill pillar-format-yt">16:9 Cinema</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pillar-card yt-card" onclick="openFullscreenVideo(event, 'youtube_16_9/05_SaaS_Product_96_Accuracy_Motion_1080p.mp4', true)">
+              <div class="pillar-media widescreen-16-9">
+                <img src="youtube_16_9/thumbnails/05_SaaS_Product_96_Accuracy_Motion_1080p.jpg" alt="AI Accuracy & SaaS Workflow - 16:9 Product Motion Animation" loading="lazy" onerror="this.src='profile.jpeg'" />
+                <span class="res-badge res-yt">1080p FHD 60fps</span>
+                <span class="pillar-duration-badge">00:23</span>
+                <div class="pillar-play-hover">
+                  <div class="play-box play-yt">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="pillar-card-content">
+                <div class="pillar-card-title">AI Accuracy & SaaS Workflow - 16:9 Product Motion Animation</div>
+                <div class="pillar-card-sub">SaaS Product Motion & UI Animation</div>
+                <div class="pillar-card-meta">
+                  <span class="pillar-tag-pill">Tech UI Motion</span>
+                  <span class="pillar-format-pill pillar-format-yt">16:9 Cinema</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pillar-card yt-card" onclick="openFullscreenVideo(event, 'youtube_16_9/06_All_In_One_Platform_Motion_Explainer_1080p.mp4', true)">
+              <div class="pillar-media widescreen-16-9">
+                <img src="youtube_16_9/thumbnails/06_All_In_One_Platform_Motion_Explainer_1080p.jpg" alt="Unified Workspace App - Kinetic UI & Motion Graphics" loading="lazy" onerror="this.src='profile.jpeg'" />
+                <span class="res-badge res-yt">1080p FHD 60fps</span>
+                <span class="pillar-duration-badge">00:57</span>
+                <div class="pillar-play-hover">
+                  <div class="play-box play-yt">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="pillar-card-content">
+                <div class="pillar-card-title">Unified Workspace App - Kinetic UI & Motion Graphics</div>
+                <div class="pillar-card-sub">Brand Kinetic Typography & App Ecosystem</div>
+                <div class="pillar-card-meta">
+                  <span class="pillar-tag-pill">Kinetic Typography</span>
+                  <span class="pillar-format-pill pillar-format-yt">16:9 Cinema</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= PILLAR 2: PREMIUM REAL ESTATE & MOTION EDITS ================= -->
+        <div class="showcase-pillar-container pillar-motion" id="premium-motion">
+          <div class="pillar-badge-tag badge-motion">
+            <span class="pulse-amber-dot"></span> 🏢 PREMIUM REAL ESTATE & MOTION EDITS
+          </div>
+          <h3 class="pillar-h3 h3-motion">Premium Real Estate & <span>Architectural Motion Design</span></h3>
+          <p class="pillar-sub">Commercial property showcases, luxury villa walkthroughs, drone boundary VFX plotting, and high-rise aerial cinematography tailored for premier builders and developers.</p>
+
+          <div class="pillar-cards-grid grid-9-14">
+            <div class="pillar-card motion-card" onclick="openFullscreenVideo(event, 'foxpop/02_Videographer/34_UKXI4okjCtCWwrsSG02Ssxy00ccCrlpFlnJLknGTTkkC00.mp4', false)">
+              <div class="pillar-media vertical-9-14">
+                <img src="foxpop/02_Videographer/thumbnails/34_UKXI4okjCtCWwrsSG02Ssxy00ccCrlpFlnJLknGTTkkC00.jpg" alt="Swastik Pragati Pearl - 70% Sold Out Commercial & Residential" loading="lazy" onerror="this.src='profile.jpeg'" />
+                <span class="res-badge res-motion">1080p FHD 60fps</span>
+                <span class="pillar-duration-badge">00:28</span>
+                <div class="pillar-play-hover">
+                  <div class="play-box play-motion">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="pillar-card-content">
+                <div class="pillar-card-title">Swastik Pragati Pearl - 70% Sold Out Commercial & Residential</div>
+                <div class="pillar-card-sub">Commercial Real Estate & 3D Typography</div>
+                <div class="pillar-card-meta">
+                  <span class="pillar-tag-pill">Real Estate Motion</span>
+                  <span class="pillar-format-pill pillar-format-motion">Motion Edit</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pillar-card motion-card" onclick="openFullscreenVideo(event, 'foxpop/02_Videographer/35_L7uF9ElZgLDJEunEk7LmBOQn2C00itw1olEllpRVOOAM.mp4', false)">
+              <div class="pillar-media vertical-9-14">
+                <img src="foxpop/02_Videographer/thumbnails/35_L7uF9ElZgLDJEunEk7LmBOQn2C00itw1olEllpRVOOAM.jpg" alt="Luxury Villa Architecture & Interior Walkthrough" loading="lazy" onerror="this.src='profile.jpeg'" />
+                <span class="res-badge res-motion">1080p FHD</span>
+                <span class="pillar-duration-badge">00:24</span>
+                <div class="pillar-play-hover">
+                  <div class="play-box play-motion">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="pillar-card-content">
+                <div class="pillar-card-title">Luxury Villa Architecture & Interior Walkthrough</div>
+                <div class="pillar-card-sub">Luxury Architecture & Cinematic Color Grade</div>
+                <div class="pillar-card-meta">
+                  <span class="pillar-tag-pill">Luxury Architecture</span>
+                  <span class="pillar-format-pill pillar-format-motion">Motion Edit</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pillar-card motion-card" onclick="openFullscreenVideo(event, 'foxpop/02_Videographer/36_vnrM00ieL9T202hRjDMgDERpw6c9XQ01L3UU02RI6zXrfEE.mp4', false)">
+              <div class="pillar-media vertical-9-14">
+                <img src="foxpop/02_Videographer/thumbnails/36_vnrM00ieL9T202hRjDMgDERpw6c9XQ01L3UU02RI6zXrfEE.jpg" alt="Bajaj Green Prime Township Drone & Sunset Cinematics" loading="lazy" onerror="this.src='profile.jpeg'" />
+                <span class="res-badge res-motion">1080p FHD</span>
+                <span class="pillar-duration-badge">00:28</span>
+                <div class="pillar-play-hover">
+                  <div class="play-box play-motion">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="pillar-card-content">
+                <div class="pillar-card-title">Bajaj Green Prime Township Drone & Sunset Cinematics</div>
+                <div class="pillar-card-sub">Township Aerial Drone & Architectural Overview</div>
+                <div class="pillar-card-meta">
+                  <span class="pillar-tag-pill">Township Aerial</span>
+                  <span class="pillar-format-pill pillar-format-motion">Motion Edit</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pillar-card motion-card" onclick="openFullscreenVideo(event, 'foxpop/08_Copy_And_Content_Writing/08_miv01jzSNDtw7kgWm3UKsywpx28Fkp82SCgn02aMPZa5Q.mp4', false)">
+              <div class="pillar-media vertical-9-14">
+                <img src="foxpop/08_Copy_And_Content_Writing/thumbnails/08_miv01jzSNDtw7kgWm3UKsywpx28Fkp82SCgn02aMPZa5Q.jpg" alt="AKIRA Luxury Living & Bespoke Interior Architecture" loading="lazy" onerror="this.src='profile.jpeg'" />
+                <span class="res-badge res-motion">1080p FHD</span>
+                <span class="pillar-duration-badge">01:03</span>
+                <div class="pillar-play-hover">
+                  <div class="play-box play-motion">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="pillar-card-content">
+                <div class="pillar-card-title">AKIRA Luxury Living & Bespoke Interior Architecture</div>
+                <div class="pillar-card-sub">High-End Hospitality & Luxury Living Spaces</div>
+                <div class="pillar-card-meta">
+                  <span class="pillar-tag-pill">Luxury Dining</span>
+                  <span class="pillar-format-pill pillar-format-motion">Motion Edit</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pillar-card motion-card" onclick="openFullscreenVideo(event, 'foxpop/08_Copy_And_Content_Writing/09_jMK1maun7QDRvy00KaewIMNPKR00DwDhVnLZDwXTE02drA.mp4', false)">
+              <div class="pillar-media vertical-9-14">
+                <img src="foxpop/08_Copy_And_Content_Writing/thumbnails/09_jMK1maun7QDRvy00KaewIMNPKR00DwDhVnLZDwXTE02drA.jpg" alt="Real Estate Land Plotting Motion VFX & Drone Boundary" loading="lazy" onerror="this.src='profile.jpeg'" />
+                <span class="res-badge res-motion">1080p FHD</span>
+                <span class="pillar-duration-badge">00:53</span>
+                <div class="pillar-play-hover">
+                  <div class="play-box play-motion">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="pillar-card-content">
+                <div class="pillar-card-title">Real Estate Land Plotting Motion VFX & Drone Boundary</div>
+                <div class="pillar-card-sub">3D Demarcation VFX & Drone Tracking</div>
+                <div class="pillar-card-meta">
+                  <span class="pillar-tag-pill">Drone VFX</span>
+                  <span class="pillar-format-pill pillar-format-motion">Motion Edit</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pillar-card motion-card" onclick="openFullscreenVideo(event, 'foxpop/08_Copy_And_Content_Writing/10_1smpGpKQ00JVKtISuX4oAfGl1v152yloPMKQR99XiTfg.mp4', false)">
+              <div class="pillar-media vertical-9-14">
+                <img src="foxpop/08_Copy_And_Content_Writing/thumbnails/10_1smpGpKQ00JVKtISuX4oAfGl1v152yloPMKQR99XiTfg.jpg" alt="Shri Swastik Group Luxury High-Rise & Aerial Cinematics" loading="lazy" onerror="this.src='profile.jpeg'" />
+                <span class="res-badge res-motion">1080p FHD</span>
+                <span class="pillar-duration-badge">00:56</span>
+                <div class="pillar-play-hover">
+                  <div class="play-box play-motion">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="pillar-card-content">
+                <div class="pillar-card-title">Shri Swastik Group Luxury High-Rise & Aerial Cinematics</div>
+                <div class="pillar-card-sub">Tower Elevation & Skyline Architecture</div>
+                <div class="pillar-card-meta">
+                  <span class="pillar-tag-pill">High-Rise Aerial</span>
+                  <span class="pillar-format-pill pillar-format-motion">Motion Edit</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= PILLAR 3: VIRAL TALKING HEADS & HIGH-RETENTION SHORTS ================= -->
+        <div class="showcase-pillar-container pillar-talking" id="talking-heads">
+          <div class="pillar-badge-tag badge-talking">
+            <span class="pulse-purple-dot"></span> 🎙️ VIRAL TALKING HEADS & HIGH-RETENTION SHORTS
+          </div>
+          <h3 class="pillar-h3 h3-talking">Viral Talking Heads & <span>High-Retention Social Reels</span></h3>
+          <p class="pillar-sub">High-energy creator shorts, fast-cut pacing, kinetic subtitle animations, podcast highlights, and educational talking heads engineered for maximum watch-time and algorithmic reach.</p>
+
+          <div class="pillar-cards-grid grid-9-14">
+            <div class="pillar-card th-card" onclick="openFullscreenVideo(event, 'foxpop/01_Video_Editing/29_oVW9E00M02K4nh02VhWobRPOexOa62v7ZZhqzwtV2JdrGQ.mp4', false)">
+              <div class="pillar-media vertical-9-14">
+                <img src="foxpop/01_Video_Editing/thumbnails/29_oVW9E00M02K4nh02VhWobRPOexOa62v7ZZhqzwtV2JdrGQ.jpg" alt="Creator Masterclass & Kinetic Subtitle Reel" loading="lazy" onerror="this.src='profile.jpeg'" />
+                <span class="res-badge res-th">1080p FHD 60fps</span>
+                <span class="pillar-duration-badge">00:31</span>
+                <div class="pillar-play-hover">
+                  <div class="play-box play-th">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="pillar-card-content">
+                <div class="pillar-card-title">Creator Masterclass & Kinetic Subtitle Reel</div>
+                <div class="pillar-card-sub">Podcast Cut, Sound Design & Dynamic Captions</div>
+                <div class="pillar-card-meta">
+                  <span class="pillar-tag-pill">Talking Head</span>
+                  <span class="pillar-format-pill pillar-format-th">Talking Head</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pillar-card th-card" onclick="openFullscreenVideo(event, 'foxpop/01_Video_Editing/31_YLOhU7ChgTbNtKVXF9LtQlrf2zAbApWFVgUnLMo1IrY.mp4', false)">
+              <div class="pillar-media vertical-9-14">
+                <img src="foxpop/01_Video_Editing/thumbnails/31_YLOhU7ChgTbNtKVXF9LtQlrf2zAbApWFVgUnLMo1IrY.jpg" alt="Dynamic Motion & Fast-Cut Viral Short" loading="lazy" onerror="this.src='profile.jpeg'" />
+                <span class="res-badge res-th">1080p FHD</span>
+                <span class="pillar-duration-badge">00:28</span>
+                <div class="pillar-play-hover">
+                  <div class="play-box play-th">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="pillar-card-content">
+                <div class="pillar-card-title">Dynamic Motion & Fast-Cut Viral Short</div>
+                <div class="pillar-card-sub">Pacing, Motion Graphics & Visual Punch</div>
+                <div class="pillar-card-meta">
+                  <span class="pillar-tag-pill">Viral Short</span>
+                  <span class="pillar-format-pill pillar-format-th">Talking Head</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pillar-card th-card" onclick="openFullscreenVideo(event, 'foxpop/01_Video_Editing/32_vQkFEcTjyDpNOnB4Yx02P6sLo8C1zOU00LZ3pJJut8p4Q.mp4', false)">
+              <div class="pillar-media vertical-9-14">
+                <img src="foxpop/01_Video_Editing/thumbnails/32_vQkFEcTjyDpNOnB4Yx02P6sLo8C1zOU00LZ3pJJut8p4Q.jpg" alt="High-Engagement Talking Head Retention Cut" loading="lazy" onerror="this.src='profile.jpeg'" />
+                <span class="res-badge res-th">1080p FHD</span>
+                <span class="pillar-duration-badge">00:32</span>
+                <div class="pillar-play-hover">
+                  <div class="play-box play-th">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="pillar-card-content">
+                <div class="pillar-card-title">High-Engagement Talking Head Retention Cut</div>
+                <div class="pillar-card-sub">Talking Head Engagement & B-Roll Overlays</div>
+                <div class="pillar-card-meta">
+                  <span class="pillar-tag-pill">Talking Head</span>
+                  <span class="pillar-format-pill pillar-format-th">Talking Head</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pillar-card th-card" onclick="openFullscreenVideo(event, 'foxpop/01_Video_Editing/27_8MzJqYiCa9ERsGUnWoJqOvgOsoZ9Imz9sGQE8zVt2Xg.mp4', false)">
+              <div class="pillar-media vertical-9-14">
+                <img src="foxpop/01_Video_Editing/thumbnails/27_8MzJqYiCa9ERsGUnWoJqOvgOsoZ9Imz9sGQE8zVt2Xg.jpg" alt="High-Retention Hook & Fast-Paced Viral Creator Reel" loading="lazy" onerror="this.src='profile.jpeg'" />
+                <span class="res-badge res-th">1080p FHD 60fps</span>
+                <span class="pillar-duration-badge">00:39</span>
+                <div class="pillar-play-hover">
+                  <div class="play-box play-th">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="pillar-card-content">
+                <div class="pillar-card-title">High-Retention Hook & Fast-Paced Viral Creator Reel</div>
+                <div class="pillar-card-sub">0-3s Hook Rate Optimization & Speed Ramping</div>
+                <div class="pillar-card-meta">
+                  <span class="pillar-tag-pill">Viral Hook</span>
+                  <span class="pillar-format-pill pillar-format-th">Talking Head</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pillar-card th-card" onclick="openFullscreenVideo(event, 'foxpop/06_Social_Media_Manager/18_flshZlPEkVAADymibaXozoHZLQqDOdOCNkdwJzsiyu8.mp4', false)">
+              <div class="pillar-media vertical-9-14">
+                <img src="foxpop/06_Social_Media_Manager/thumbnails/18_flshZlPEkVAADymibaXozoHZLQqDOdOCNkdwJzsiyu8.jpg" alt="Real Estate Market Insights & Property Advisory Reel" loading="lazy" onerror="this.src='profile.jpeg'" />
+                <span class="res-badge res-th">1080p FHD</span>
+                <span class="pillar-duration-badge">00:52</span>
+                <div class="pillar-play-hover">
+                  <div class="play-box play-th">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="pillar-card-content">
+                <div class="pillar-card-title">Real Estate Market Insights & Property Advisory Reel</div>
+                <div class="pillar-card-sub">Expert Advisory, Kinetic Charts & Lower Thirds</div>
+                <div class="pillar-card-meta">
+                  <span class="pillar-tag-pill">Expert Advisory</span>
+                  <span class="pillar-format-pill pillar-format-th">Talking Head</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pillar-card th-card" onclick="openFullscreenVideo(event, 'foxpop/06_Social_Media_Manager/20_z5Btw4yY02TQnPhUNQdXidffuzKAzPGu5tm02oyeKx42M.mp4', false)">
+              <div class="pillar-media vertical-9-14">
+                <img src="foxpop/06_Social_Media_Manager/thumbnails/20_z5Btw4yY02TQnPhUNQdXidffuzKAzPGu5tm02oyeKx42M.jpg" alt="Property Registry & Real Estate Legal Guide Reel" loading="lazy" onerror="this.src='profile.jpeg'" />
+                <span class="res-badge res-th">1080p FHD</span>
+                <span class="pillar-duration-badge">00:59</span>
+                <div class="pillar-play-hover">
+                  <div class="play-box play-th">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="pillar-card-content">
+                <div class="pillar-card-title">Property Registry & Real Estate Legal Guide Reel</div>
+                <div class="pillar-card-sub">Client Educational Reel with Clean Iconography</div>
+                <div class="pillar-card-meta">
+                  <span class="pillar-tag-pill">Legal Guide</span>
+                  <span class="pillar-format-pill pillar-format-th">Talking Head</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= MASTER CATEGORIZED VIDEO REPERTOIRE ================= -->
+        <div class="gallery-header-area" id="gallery">
+          <h3 class="gallery-h3">Categorized <span>Video Portfolio</span></h3>
+          <p class="gallery-sub">Explore our complete library across all 3 pillars: 16:9 YouTube Cinema, Premium Real Estate Motion, and High-Retention Viral Talking Heads.</p>
+          
+          <div class="filter-tabs-wrapper">
+            <button class="filter-tab-btn active" onclick="filterGallery('all', this)">
+              <span>🌟 All Videos</span> <span class="tab-badge" id="badge-all">24</span>
+            </button>
+            <button class="filter-tab-btn" onclick="filterGallery('youtube-16-9', this)">
+              <span>📺 YouTube Long-Form (16:9)</span> <span class="tab-badge" id="badge-youtube-16-9">5</span>
+            </button>
+            <button class="filter-tab-btn" onclick="filterGallery('premium-motion', this)">
+              <span>🏢 Premium Motion & Real Estate</span> <span class="tab-badge" id="badge-premium-motion">9</span>
+            </button>
+            <button class="filter-tab-btn" onclick="filterGallery('talking-heads', this)">
+              <span>🎙️ Viral Talking Heads & Shorts</span> <span class="tab-badge" id="badge-talking-heads">10</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="portfolio-grid" id="portfolioGrid">
+          <!-- Populated dynamically by renderPortfolioGrid() -->
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ================= ABOUT ME SECTION ================= -->
+    <section id="about" class="about-section">
+      <div aria-hidden="true" class="ambient-bg-wrapper">
+        <div class="ambient-blob blob-1"></div>
+        <div class="ambient-blob blob-2"></div>
+      </div>
+
+      <div class="content-container">
+        <!-- Profile Card -->
+        <div class="profile-card">
+          <div class="profile-card-sweep"></div>
+          <div class="profile-card-radial"></div>
+
+          <div class="profile-photo-wrapper">
+            <img src="profile.jpeg" onerror="this.src='../profile.jpeg'" alt="Nishant Jain Profile Picture" draggable="false" class="profile-photo" />
+          </div>
+
+          <div class="profile-text-content">
+            <h2 style="font-size:clamp(24px, 3vw, 32px);font-weight:800;margin-bottom:16px;letter-spacing:-0.03em">
+              About me <span class="star-icon">✦</span>
+            </h2>
+            <p style="color:var(--text-secondary);font-size:15px;line-height:1.85;font-weight:300;max-width:560px">
+              I'm Nishant Jain, a video editor and motion graphics designer with over three years of professional experience. I specialize in creating cinematic videos and digital content, focusing on creativity, precision, and strong storytelling.
+            </p>
+          </div>
+        </div>
+
+        <!-- Stats Grid (4 Cards) -->
+        <div class="about-stats-grid">
+          <div class="stat-card">
+            <div class="stat-card-glow" style="opacity:0"></div>
+            <div>
+              <div style="font-size:clamp(20px, 2.2vw, 26px);font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:-0.04em">120+</div>
+              <div style="font-size:11px;color:#a855f7;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px">Projects Delivered</div>
+              <div style="font-size:10px;color:var(--text-muted)">Cinematic Works</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-glow" style="opacity:0"></div>
+            <div>
+              <div style="font-size:clamp(20px, 2.2vw, 26px);font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:-0.04em">4+</div>
+              <div style="font-size:11px;color:#a855f7;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px">Years Experience</div>
+              <div style="font-size:10px;color:var(--text-muted)">Pro Industry</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-glow" style="opacity:0"></div>
+            <div>
+              <div style="font-size:clamp(20px, 2.2vw, 26px);font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:-0.04em">98%</div>
+              <div style="font-size:11px;color:#a855f7;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px">Client Satisfaction</div>
+              <div style="font-size:10px;color:var(--text-muted)">Top Rated</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-glow" style="opacity:0"></div>
+            <div>
+              <div style="font-size:clamp(20px, 2.2vw, 26px);font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:-0.04em">7+</div>
+              <div style="font-size:11px;color:#a855f7;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px">Happy Clients</div>
+              <div style="font-size:10px;color:var(--text-muted)">Worldwide</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Circular Software Proficiency -->
+        <div style="text-align:center">
+          <h3 style="font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--text-muted);margin-bottom:52px">
+            Powering my creativity
+          </h3>
+
+          <div class="software-grid">
+            <!-- 1. Premiere Pro (98%) -->
+            <div class="circular-progress-container">
+              <div style="position:relative;width:112px;height:112px">
+                <svg width="112" height="112" viewBox="0 0 112 112" style="position:relative;z-index:2;overflow:visible">
+                  <circle cx="56" cy="56" r="38" fill="none" stroke="rgba(168,85,247,0.15)" stroke-width="5" transform="rotate(-90 56 56)"></circle>
+                  <circle cx="56" cy="56" r="38" fill="none" stroke="#a855f7" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="238.76" stroke-dashoffset="4.77" transform="rotate(-90 56 56)" style="filter:drop-shadow(0 0 4px rgba(168,85,247,0.5))"></circle>
+                  <circle cx="51.2" cy="18.3" r="4" fill="#a855f7" style="filter:drop-shadow(0 0 5px #a855f7)"></circle>
+                </svg>
+                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:3">
+                  <div class="icon-wrapper">
+                    <img src="icons/adobe-premiere-pro-icon.png" alt="Premiere Pro" width="36" height="36" style="border-radius:10px" />
+                  </div>
+                </div>
+              </div>
+              <div style="text-align:center">
+                <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:4px">Premiere Pro</div>
+                <div style="font-size:14px;font-weight:800;letter-spacing:-0.02em;color:#a855f7">98%</div>
+              </div>
+            </div>
+
+            <!-- 2. After Effects (98%) -->
+            <div class="circular-progress-container">
+              <div style="position:relative;width:112px;height:112px">
+                <svg width="112" height="112" viewBox="0 0 112 112" style="position:relative;z-index:2;overflow:visible">
+                  <circle cx="56" cy="56" r="38" fill="none" stroke="rgba(168,85,247,0.15)" stroke-width="5" transform="rotate(-90 56 56)"></circle>
+                  <circle cx="56" cy="56" r="38" fill="none" stroke="#a855f7" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="238.76" stroke-dashoffset="4.77" transform="rotate(-90 56 56)" style="filter:drop-shadow(0 0 4px rgba(168,85,247,0.5))"></circle>
+                  <circle cx="51.2" cy="18.3" r="4" fill="#a855f7" style="filter:drop-shadow(0 0 5px #a855f7)"></circle>
+                </svg>
+                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:3">
+                  <div class="icon-wrapper">
+                    <img src="icons/adobe-after-effects-icon.png" alt="After Effects" width="36" height="36" style="border-radius:10px" />
+                  </div>
+                </div>
+              </div>
+              <div style="text-align:center">
+                <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:4px">After Effects</div>
+                <div style="font-size:14px;font-weight:800;letter-spacing:-0.02em;color:#a855f7">98%</div>
+              </div>
+            </div>
+
+            <!-- 3. Photoshop (98%) -->
+            <div class="circular-progress-container">
+              <div style="position:relative;width:112px;height:112px">
+                <svg width="112" height="112" viewBox="0 0 112 112" style="position:relative;z-index:2;overflow:visible">
+                  <circle cx="56" cy="56" r="38" fill="none" stroke="rgba(168,85,247,0.15)" stroke-width="5" transform="rotate(-90 56 56)"></circle>
+                  <circle cx="56" cy="56" r="38" fill="none" stroke="#a855f7" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="238.76" stroke-dashoffset="4.77" transform="rotate(-90 56 56)" style="filter:drop-shadow(0 0 4px rgba(168,85,247,0.5))"></circle>
+                  <circle cx="51.2" cy="18.3" r="4" fill="#a855f7" style="filter:drop-shadow(0 0 5px #a855f7)"></circle>
+                </svg>
+                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:3">
+                  <div class="icon-wrapper">
+                    <img src="icons/adobe-photoshop-icon.png" alt="Photoshop" width="36" height="36" style="border-radius:10px" />
+                  </div>
+                </div>
+              </div>
+              <div style="text-align:center">
+                <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:4px">Photoshop</div>
+                <div style="font-size:14px;font-weight:800;letter-spacing:-0.02em;color:#a855f7">98%</div>
+              </div>
+            </div>
+
+            <!-- 4. DaVinci Resolve (70%) -->
+            <div class="circular-progress-container">
+              <div style="position:relative;width:112px;height:112px">
+                <svg width="112" height="112" viewBox="0 0 112 112" style="position:relative;z-index:2;overflow:visible">
+                  <circle cx="56" cy="56" r="38" fill="none" stroke="rgba(192,132,252,0.12)" stroke-width="5" transform="rotate(-90 56 56)"></circle>
+                  <circle cx="56" cy="56" r="38" fill="none" stroke="#c084fc" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="238.76" stroke-dashoffset="71.63" transform="rotate(-90 56 56)" style="filter:drop-shadow(0 0 4px rgba(192,132,252,0.4))"></circle>
+                  <circle cx="19.9" cy="67.7" r="4" fill="#c084fc" style="filter:drop-shadow(0 0 5px #c084fc)"></circle>
+                </svg>
+                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:3">
+                  <div class="icon-wrapper">
+                    <img src="icons/davinci-resolve.png" alt="DaVinci Resolve" width="36" height="36" style="border-radius:10px" />
+                  </div>
+                </div>
+              </div>
+              <div style="text-align:center">
+                <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:4px">DaVinci Resolve</div>
+                <div style="font-size:14px;font-weight:800;letter-spacing:-0.02em;color:#c084fc">70%</div>
+              </div>
+            </div>
+
+            <!-- 5. Blender (30%) -->
+            <div class="circular-progress-container">
+              <div style="position:relative;width:112px;height:112px">
+                <svg width="112" height="112" viewBox="0 0 112 112" style="position:relative;z-index:2;overflow:visible">
+                  <circle cx="56" cy="56" r="38" fill="none" stroke="rgba(216,180,254,0.10)" stroke-width="5" transform="rotate(-90 56 56)"></circle>
+                  <circle cx="56" cy="56" r="38" fill="none" stroke="#d8b4fe" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="238.76" stroke-dashoffset="167.13" transform="rotate(-90 56 56)" style="filter:drop-shadow(0 0 4px rgba(216,180,254,0.3))"></circle>
+                  <circle cx="92.1" cy="67.7" r="4" fill="#d8b4fe" style="filter:drop-shadow(0 0 5px #d8b4fe)"></circle>
+                </svg>
+                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:3">
+                  <div class="icon-wrapper">
+                    <img src="icons/blender-icon.png" alt="Blender" width="36" height="36" style="border-radius:10px" />
+                  </div>
+                </div>
+              </div>
+              <div style="text-align:center">
+                <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:4px">Blender</div>
+                <div style="font-size:14px;font-weight:800;letter-spacing:-0.02em;color:#d8b4fe">30%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skills Marquee Bar -->
+        <div class="skills-section">
+          <div style="position:relative;padding:10px 0">
+            <div class="marquee-gradient-overlay"></div>
+            <div class="marquee-row">
+              <div class="marquee-track">
+                <span class="skill-tag">Motion Graphics</span>
+                <span class="skill-tag">Video Editing</span>
+                <span class="skill-tag">Color Grading</span>
+                <span class="skill-tag">Sound Design</span>
+                <span class="skill-tag">VFX Compositing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================= FAQ SECTION ================= -->
+    <section id="faq">
+      <div class="faq-container-inner">
+        <div style="margin-bottom:56px;text-align:center">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px">FAQ</div>
+          <h2 style="font-size:clamp(24px, 3vw, 32px);font-weight:800;letter-spacing:-0.03em;line-height:1.2">
+            Your questions,<br /><span style="color:var(--accent)">answered.</span>
+          </h2>
+        </div>
+
+        <!-- Question 1 -->
+        <div class="faq-card open">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-title">What software do you use for editing?</span>
+            <span class="faq-btn-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+            </span>
+          </button>
+          <div class="faq-content-body">
+            <p>I mainly work with Adobe After Effects for motion design and animation, and Premiere Pro for video editing. For design and assets, I use Figma and Adobe Photoshop to ensure everything is clean, structured, and production-ready.</p>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="faq-card">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-title">How fast will I receive my video?</span>
+            <span class="faq-btn-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+            </span>
+          </button>
+          <div class="faq-content-body">
+            <p>Typically short-form content and reels are delivered within 24–48 hours. Long-form and advanced commercial productions take 3–5 business days depending on visual complexity.</p>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="faq-card">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-title">What payment methods do you accept?</span>
+            <span class="faq-btn-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+            </span>
+          </button>
+          <div class="faq-content-body">
+            <p>We accept direct bank transfers (UPI, NEFT, IMPS), PayPal, Stripe, and Wise for international clients. Both project-based milestones and monthly retainers are available.</p>
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="faq-card">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-title">Are there any limits on revisions?</span>
+            <span class="faq-btn-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+            </span>
+          </button>
+          <div class="faq-content-body">
+            <p>We include unlimited reasonable revisions until you are 100% satisfied with the outcome, as long as it aligns with the initial project scope and agreed brief.</p>
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="faq-card">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-title">What do you need from me to get started?</span>
+            <span class="faq-btn-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+            </span>
+          </button>
+          <div class="faq-content-body">
+            <p>Just send your raw footage, audio, reference style links, and branding assets via Google Drive, WeTransfer, or Dropbox. Then reach out on WhatsApp (+91 9468993588) to start immediately!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+        <!-- ================= GET IN TOUCH & QUICK ORDER SECTION ================= -->
+    <section id="contact" class="quick-order-section">
+      <div class="quick-order-ambient-glow"></div>
+      
+      <div class="quick-order-container">
+        <!-- LEFT COLUMN: GET IN TOUCH -->
+        <div class="get-in-touch-col">
+          <div class="touch-tag">— GET IN TOUCH</div>
+          
+          <div class="outline-headline-wrap">
+            <div class="outline-stroke-text">LET'S</div>
+            <div class="solid-white-text">CREATE</div>
+            <div class="outline-stroke-text">TOGETHER</div>
+          </div>
+
+          <p class="touch-sub">
+            Ready to stop losing clicks and retention? Let's build cinematic video edits that actually convert. Fast, professional, zero drama.
+          </p>
+
+          <!-- 3 Interactive Contact Cards -->
+          <div class="contact-cards-stack">
+            <!-- WhatsApp -->
+            <a href="https://wa.me/919468993588?text=Hi%20Nishant,%20I'd%20like%20to%20discuss%20a%20video%20project!" target="_blank" rel="noopener noreferrer" class="contact-row-card">
+              <div class="contact-card-icon-box icon-wa">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.541 1.961.828 3.023.829h.005c3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.816-5.991-6.016zm3.411 8.232c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.111-.059-.265-.087-.611-.202-1.054-.396-1.859-.816-3.072-2.709-3.165-2.833-.093-.124-.754-.997-.754-1.901 0-.905.474-1.35.643-1.536.17-.186.371-.233.495-.233.124 0 .248.001.355.006.113.006.264-.043.413.315.155.371.531 1.288.577 1.381.047.093.078.202.016.326-.062.124-.093.202-.186.31-.093.109-.196.243-.28.326-.093.093-.191.196-.082.383.109.186.483.797 1.037 1.29 1.151 1.026 1.83 1.077 2.062 1.185.233.109.372.093.511-.062.14-.155.597-.697.755-.937.159-.24.318-.202.536-.124.218.077 1.381.651 1.62.77.24.119.398.176.457.275.059.1.059.576-.085.981z"/></svg>
+              </div>
+              <div class="contact-card-info">
+                <div class="contact-card-lbl">WHATSAPP</div>
+                <div class="contact-card-val">WhatsApp Now</div>
+              </div>
+              <div class="contact-card-arrow">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+              </div>
+            </a>
+
+            <!-- Direct Call -->
+            <a href="tel:+919468993588" class="contact-row-card">
+              <div class="contact-card-icon-box icon-phone">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div class="contact-card-info">
+                <div class="contact-card-lbl">DIRECT CALL</div>
+                <div class="contact-card-val">Call Now</div>
+              </div>
+              <div class="contact-card-arrow">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+              </div>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="contact-row-card">
+              <div class="contact-card-icon-box icon-insta">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+              </div>
+              <div class="contact-card-info">
+                <div class="contact-card-lbl">INSTAGRAM</div>
+                <div class="contact-card-val">Message on Instagram</div>
+              </div>
+              <div class="contact-card-arrow">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: QUICK ORDER CARD -->
+        <div class="quick-order-box" id="quick-order">
+          <div class="quick-order-title">QUICK ORDER</div>
+
+          <form id="quickOrderForm" onsubmit="handleQuickOrderSubmit(event)">
+            <div class="order-inputs-grid-2">
+              <div class="order-field-wrap">
+                <label class="order-field-label">YOUR NAME</label>
+                <input type="text" id="orderName" class="order-field-input" placeholder="Rahul Sharma" required />
+              </div>
+              <div class="order-field-wrap">
+                <label class="order-field-label">CHANNEL / BRAND NAME</label>
+                <input type="text" id="orderChannel" class="order-field-input" placeholder="My Channel / Company" required />
+              </div>
+            </div>
+
+            <div class="order-field-wrap">
+              <label class="order-field-label">NICHE / CATEGORY</label>
+              <select id="orderNiche" class="order-field-select" required>
+                <option value="" disabled selected>Select niche...</option>
+                <option value="YouTube Long-Form (16:9)">📺 YouTube Long-Form (16:9)</option>
+                <option value="Premium Real Estate & Architecture">🏢 Premium Real Estate & Architecture</option>
+                <option value="Viral Talking Head & Social Reel">🎙️ Viral Talking Head & Social Reel</option>
+                <option value="SaaS / Tech UI Motion Animation">⚡ SaaS / Tech UI Motion Animation</option>
+                <option value="Commercial Production / Other">🔥 Commercial Production / Other</option>
+              </select>
+            </div>
+
+            <div class="order-field-wrap">
+              <label class="order-field-label">VIDEO TOPIC</label>
+              <input type="text" id="orderTopic" class="order-field-input" placeholder="What's your video about?" required />
+            </div>
+
+            <div class="order-field-wrap">
+              <label class="order-field-label">DETAILS & REFERENCES</label>
+              <textarea id="orderDetails" class="order-field-textarea" rows="3" placeholder="Style, references, target duration, raw footage link..."></textarea>
+            </div>
+
+            <button type="submit" class="order-submit-btn">
+              <span class="order-btn-content">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 16.5-1.5 1.5 4.5 4.5 1.5-1.5-4.5-4.5z"/><path d="m15 4.5-3.5 3.5 5 5 3.5-3.5-5-5z"/><path d="m9 10.5 4.5 4.5"/><path d="m17.5 2 4.5 4.5"/><line x1="2" x2="6" y1="22" y2="18"/></svg>
+                SEND ORDER REQUEST
+              </span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Floating WhatsApp Chat Bubble -->
+      <a href="https://wa.me/919468993588?text=Hi%20Nishant,%20I'm%20interested%20in%20your%20video%20editing%20services!" target="_blank" rel="noopener noreferrer" class="floating-wa-bubble" title="Chat on WhatsApp">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="#ffffff"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.541 1.961.828 3.023.829h.005c3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.816-5.991-6.016zm3.411 8.232c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.111-.059-.265-.087-.611-.202-1.054-.396-1.859-.816-3.072-2.709-3.165-2.833-.093-.124-.754-.997-.754-1.901 0-.905.474-1.35.643-1.536.17-.186.371-.233.495-.233.124 0 .248.001.355.006.113.006.264-.043.413.315.155.371.531 1.288.577 1.381.047.093.078.202.016.326-.062.124-.093.202-.186.31-.093.109-.196.243-.28.326-.093.093-.191.196-.082.383.109.186.483.797 1.037 1.29 1.151 1.026 1.83 1.077 2.062 1.185.233.109.372.093.511-.062.14-.155.597-.697.755-.937.159-.24.318-.202.536-.124.218.077 1.381.651 1.62.77.24.119.398.176.457.275.059.1.059.576-.085.981z"/></svg>
+      </a>
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer style="border-top:1px solid var(--border);background:var(--bg)">
+      <div style="max-width:960px;margin:0 auto;padding:64px 24px 40px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:40px;margin-bottom:56px">
+          <div style="max-width:280px">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+              <div style="width:32px;height:32px;border-radius:9px;overflow:hidden;background:var(--accent)">
+                <img alt="Nishant Jain Logo" src="profile.jpeg" style="width:100%;height:100%;object-fit:cover" />
+              </div>
+              <span style="font-family:'Sora', sans-serif;font-weight:700;font-size:16px;color:var(--text-primary)">Nishant Jain</span>
+            </div>
+            <p style="color:var(--text-muted);font-size:14px;line-height:1.7">Crafting cinematic visual stories through video editing and motion graphics.</p>
+          </div>
+
+          <div style="display:flex;gap:64px;flex-wrap:wrap">
+            <div>
+              <p style="font-size:11px;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;font-weight:600;margin-bottom:16px">Navigation</p>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <a href="#work" style="color:var(--text-secondary);text-decoration:none;font-size:14px;font-weight:500">Projects</a>
+                <a href="#about" style="color:var(--text-secondary);text-decoration:none;font-size:14px;font-weight:500">About</a>
+                <a href="#faq" style="color:var(--text-secondary);text-decoration:none;font-size:14px;font-weight:500">FAQ</a>
+                <a href="#contact" style="color:var(--text-secondary);text-decoration:none;font-size:14px;font-weight:500">Contact</a>
+              </div>
+            </div>
+
+            <div>
+              <p style="font-size:11px;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;font-weight:600;margin-bottom:16px">Contact</p>
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <a href="https://wa.me/919468993588" target="_blank" style="color:var(--text-secondary);text-decoration:none;font-size:14px;display:flex;align-items:center;gap:8px">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.541 1.961.828 3.023.829h.005c3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.816-5.991-6.016zm3.411 8.232c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.111-.059-.265-.087-.611-.202-1.054-.396-1.859-.816-3.072-2.709-3.165-2.833-.093-.124-.754-.997-.754-1.901 0-.905.474-1.35.643-1.536.17-.186.371-.233.495-.233.124 0 .248.001.355.006.113.006.264-.043.413.315.155.371.531 1.288.577 1.381.047.093.078.202.016.326-.062.124-.093.202-.186.31-.093.109-.196.243-.28.326-.093.093-.191.196-.082.383.109.186.483.797 1.037 1.29 1.151 1.026 1.83 1.077 2.062 1.185.233.109.372.093.511-.062.14-.155.597-.697.755-.937.159-.24.318-.202.536-.124.218.077 1.381.651 1.62.77.24.119.398.176.457.275.059.1.059.576-.085.981z"></path></svg>
+                  WhatsApp Now
+                </a>
+                <a href="tel:+919468993588" style="color:var(--text-secondary);text-decoration:none;font-size:14px;display:flex;align-items:center;gap:8px">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  Call Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="border-top:1px solid var(--border);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
+          <p style="color:var(--text-muted);font-size:13px">© 2026 Nishant Jain — All rights reserved</p>
+          <div style="display:flex;gap:12px">
+            <a href="https://wa.me/919468993588" target="_blank" style="width:36px;height:36px;border-radius:9px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-muted);text-decoration:none">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.541 1.961.828 3.023.829h.005c3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.816-5.991-6.016zm3.411 8.232c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.111-.059-.265-.087-.611-.202-1.054-.396-1.859-.816-3.072-2.709-3.165-2.833-.093-.124-.754-.997-.754-1.901 0-.905.474-1.35.643-1.536.17-.186.371-.233.495-.233.124 0 .248.001.355.006.113.006.264-.043.413.315.155.371.531 1.288.577 1.381.047.093.078.202.016.326-.062.124-.093.202-.186.31-.093.109-.196.243-.28.326-.093.093-.191.196-.082.383.109.186.483.797 1.037 1.29 1.151 1.026 1.83 1.077 2.062 1.185.233.109.372.093.511-.062.14-.155.597-.697.755-.937.159-.24.318-.202.536-.124.218.077 1.381.651 1.62.77.24.119.398.176.457.275.059.1.059.576-.085.981z"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script src="portfolio_data.js"></script>
+  <script>
+        // 1. TOP REAL ESTATE MOTION EDITS FOR 3D CAROUSEL
+    const worksList = [
+      {
+        id: "re-luxury-villa",
+        title: "Luxury Villa Architecture & Interior Walkthrough",
+        category: "Real Estate & Architecture",
+        color: "#eab308",
+        tags: ["Real Estate", "Luxury Architecture", "1080p FHD"],
+        videoSrc: "foxpop/02_Videographer/35_L7uF9ElZgLDJEunEk7LmBOQn2C00itw1olEllpRVOOAM.mp4",
+        thumbSrc: "foxpop/02_Videographer/thumbnails/35_L7uF9ElZgLDJEunEk7LmBOQn2C00itw1olEllpRVOOAM.jpg"
+      },
+      {
+        id: "re-swastik-pearl",
+        title: "Swastik Pragati Pearl - 70% Sold Out Commercial & Residential",
+        category: "Real Estate & Architecture",
+        color: "#eab308",
+        tags: ["Real Estate Motion", "Swastik Pearl", "1080p FHD"],
+        videoSrc: "foxpop/02_Videographer/34_UKXI4okjCtCWwrsSG02Ssxy00ccCrlpFlnJLknGTTkkC00.mp4",
+        thumbSrc: "foxpop/02_Videographer/thumbnails/34_UKXI4okjCtCWwrsSG02Ssxy00ccCrlpFlnJLknGTTkkC00.jpg"
+      },
+      {
+        id: "re-bajaj-green",
+        title: "Bajaj Green Prime Township Drone & Motion Showcase",
+        category: "Real Estate & Architecture",
+        color: "#eab308",
+        tags: ["Township Drone", "Real Estate Cinematics", "1080p FHD"],
+        videoSrc: "foxpop/02_Videographer/36_vnrM00ieL9T202hRjDMgDERpw6c9XQ01L3UU02RI6zXrfEE.mp4",
+        thumbSrc: "foxpop/02_Videographer/thumbnails/36_vnrM00ieL9T202hRjDMgDERpw6c9XQ01L3UU02RI6zXrfEE.jpg"
+      },
+      {
+        id: "re-akira-interior",
+        title: "AKIRA Luxury Living & Bespoke Interior Architecture",
+        category: "Real Estate & Architecture",
+        color: "#eab308",
+        tags: ["Interior Architecture", "Luxury Living", "1080p FHD"],
+        videoSrc: "foxpop/08_Copy_And_Content_Writing/08_miv01jzSNDtw7kgWm3UKsywpx28Fkp82SCgn02aMPZa5Q.mp4",
+        thumbSrc: "foxpop/08_Copy_And_Content_Writing/thumbnails/08_miv01jzSNDtw7kgWm3UKsywpx28Fkp82SCgn02aMPZa5Q.jpg"
+      },
+      {
+        id: "re-drone-vfx",
+        title: "Real Estate Land Plotting Motion VFX & Drone Boundary",
+        category: "Real Estate & Architecture",
+        color: "#eab308",
+        tags: ["Drone VFX", "Plotting Motion", "Demarcation"],
+        videoSrc: "foxpop/08_Copy_And_Content_Writing/09_jMK1maun7QDRvy00KaewIMNPKR00DwDhVnLZDwXTE02drA.mp4",
+        thumbSrc: "foxpop/08_Copy_And_Content_Writing/thumbnails/09_jMK1maun7QDRvy00KaewIMNPKR00DwDhVnLZDwXTE02drA.jpg"
+      },
+      {
+        id: "re-swastik-aerial",
+        title: "Shri Swastik Group Luxury High-Rise & Aerial Cinematics",
+        category: "Real Estate & Architecture",
+        color: "#eab308",
+        tags: ["High-Rise Aerial", "Swastik Group", "1080p FHD"],
+        videoSrc: "foxpop/08_Copy_And_Content_Writing/10_1smpGpKQ00JVKtISuX4oAfGl1v152yloPMKQR99XiTfg.mp4",
+        thumbSrc: "foxpop/08_Copy_And_Content_Writing/thumbnails/10_1smpGpKQ00JVKtISuX4oAfGl1v152yloPMKQR99XiTfg.jpg"
+      }
+    ];
+
+    let currentSlide = 1; // Center active card is Swastik Pragati Pearl (Index 1) with Card 0 on left and Card 2 on right!
+    const cardsWrapper = document.getElementById("carouselItemsWrapper");
+    const dotsWrapper = document.getElementById("carouselDots");
+
+    function render3DCarousel() {
+      cardsWrapper.innerHTML = "";
+      dotsWrapper.innerHTML = "";
+
+      worksList.forEach((work, i) => {
+        // Dot
+        const dot = document.createElement("button");
+        dot.className = `carousel-nav-dot ${i === currentSlide ? "active" : ""}`;
+        dot.onclick = () => goToSlide(i);
+        dotsWrapper.appendChild(dot);
+
+        // Card
+        const card = document.createElement("div");
+        card.className = "carousel-item";
+        card.id = `item-${work.id}`;
+
+        card.innerHTML = `
+          <img src="${work.thumbSrc}" alt="${work.title}" />
+          <video id="vid-${work.id}" src="${work.videoSrc}" preload="none" loop playsinline></video>
+          <div class="carousel-dark-mask"></div>
+          <div class="carousel-gradient-overlay"></div>
+
+          <div class="carousel-play-btn" onclick="openFullscreenVideo(event, '${work.videoSrc}')">
+            <div class="play-inner-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+            </div>
+          </div>
+
+          <div class="carousel-card-bottom">
+            <div class="carousel-card-title">${work.title}</div>
+            <div class="carousel-card-tags">${work.tags.join(" • ")}</div>
+          </div>
+        `;
+
+        card.onclick = () => {
+          if (i !== currentSlide) {
+            goToSlide(i);
+          }
+        };
+
+        cardsWrapper.appendChild(card);
+      });
+
+      position3DCards();
+    }
+
+    function position3DCards() {
+      const items = document.querySelectorAll(".carousel-item");
+      const isMobile = window.innerWidth <= 768;
+
+      items.forEach((item, idx) => {
+        let offset = idx - currentSlide;
+        const total = worksList.length;
+        const half = total / 2;
+
+        if (offset > half) offset -= total;
+        if (offset < -half) offset += total;
+
+        const isCenter = offset === 0;
+        item.classList.toggle("center", isCenter);
+
+        let x = 0;
+        let scale = 1;
+        let rotateY = 0;
+        let opacity = 1;
+        let zIndex = 1;
+
+        if (isCenter) {
+          x = 0;
+          scale = 1;
+          rotateY = 0;
+          opacity = 1;
+          zIndex = 10;
+        } else if (offset === -1) {
+          x = isMobile ? -140 : -240;
+          scale = 0.8;
+          rotateY = 20;
+          opacity = 0.85;
+          zIndex = 5;
+        } else if (offset === 1) {
+          x = isMobile ? 140 : 240;
+          scale = 0.8;
+          rotateY = -20;
+          opacity = 0.85;
+          zIndex = 5;
+        } else {
+          x = offset < 0 ? (isMobile ? -250 : -450) : (isMobile ? 250 : 450);
+          scale = 0.65;
+          rotateY = offset < 0 ? 35 : -35;
+          opacity = 0;
+          zIndex = 1;
+        }
+
+        item.style.transform = `translateX(${x}px) scale(${scale}) rotateY(${rotateY}deg)`;
+        item.style.opacity = opacity;
+        item.style.zIndex = zIndex;
+      });
+
+      // Update dots
+      document.querySelectorAll(".carousel-nav-dot").forEach((d, i) => {
+        d.classList.toggle("active", i === currentSlide);
+      });
+    }
+
+    function rotateSlide(dir) {
+      currentSlide = (currentSlide + dir + worksList.length) % worksList.length;
+      position3DCards();
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      position3DCards();
+    }
+
+        // Modal Fullscreen Video Player with Intelligent 16:9 Widescreen Mode
+    const modalBg = document.getElementById("videoModal");
+    const modalVid = document.getElementById("modalVideo");
+
+    function openFullscreenVideo(e, src, is16x9 = false) {
+      if (e) e.stopPropagation();
+      const frame = document.querySelector(".video-modal-frame");
+      if (frame) {
+        if (is16x9 || src.includes("16_9") || src.includes("youtube")) {
+          frame.classList.add("widescreen-16-9");
+        } else {
+          frame.classList.remove("widescreen-16-9");
+        }
+      }
+      modalVid.src = src;
+      modalVid.onloadedmetadata = function() {
+        if (frame) {
+          if (this.videoWidth > this.videoHeight) {
+            frame.classList.add("widescreen-16-9");
+          } else {
+            frame.classList.remove("widescreen-16-9");
+          }
+        }
+      };
+      modalBg.classList.add("open");
+      modalVid.play();
+    }
+
+    function closeModal(e) {
+      if (e.target === modalBg) {
+        closeModalForce();
+      }
+    }
+
+    function closeModalForce() {
+      modalVid.pause();
+      modalVid.src = "";
+      modalBg.classList.remove("open");
+    }
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModalForce();
+      if (e.key === "ArrowLeft") rotateSlide(-1);
+      if (e.key === "ArrowRight") rotateSlide(1);
+    });
+
+    window.addEventListener("resize", position3DCards);
+    render3DCarousel();
+
+    // 2. Typewriter in Hero Section
+    const phrases = [
+      "Video Editor & Motion Designer",
+      "Cinematic Storytelling",
+      "High-Retention Visual Production"
+    ];
+    let pIdx = 0;
+    let cIdx = 0;
+    let deleting = false;
+    const typeTarget = document.getElementById("typewriterTarget");
+
+    function handleTypewriter() {
+      const current = phrases[pIdx];
+      if (deleting) {
+        typeTarget.textContent = current.substring(0, cIdx - 1);
+        cIdx--;
+      } else {
+        typeTarget.textContent = current.substring(0, cIdx + 1);
+        cIdx++;
+      }
+
+      let speed = deleting ? 45 : 80;
+      if (!deleting && cIdx === current.length) {
+        speed = 2200;
+        deleting = true;
+      } else if (deleting && cIdx === 0) {
+        deleting = false;
+        pIdx = (pIdx + 1) % phrases.length;
+        speed = 400;
+      }
+      setTimeout(handleTypewriter, speed);
+    }
+    handleTypewriter();
+
+    // 3. Background Ambient Particles
+    const canvas = document.getElementById("heroCanvas");
+    const ctx = canvas.getContext("2d");
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    const particles = [];
+    for (let i = 0; i < 40; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.5 + 0.5,
+        color: Math.random() > 0.5 ? "rgba(168, 85, 247, 0.35)" : "rgba(124, 58, 237, 0.2)",
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // 4. FAQ Toggle
+    function toggleFaq(btn) {
+      const card = btn.parentElement;
+      const isOpen = card.classList.contains("open");
+
+      document.querySelectorAll(".faq-card").forEach(c => c.classList.remove("open"));
+      if (!isOpen) {
+        card.classList.add("open");
+      }
+    }
+
+    // 5. Active Navbar Scroll spy
+    window.addEventListener("scroll", () => {
+      const sections = ["home", "work", "about", "faq", "contact"];
+      const navButtons = document.querySelectorAll(".nav-pill-btn");
+
+      let currentSec = "";
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 200) {
+          currentSec = id;
+        }
+      });
+
+      navButtons.forEach(b => {
+        b.classList.remove("active");
+        if (b.getAttribute("href") === `#${currentSec}`) {
+          b.classList.add("active");
+        }
+      });
+    });
+  
+    // ================= MASTER PORTFOLIO GRID & LIGHTBOX LOGIC =================
+    let currentActiveFilter = 'all';
+    let currentLightboxDeck = null;
+    let currentLightboxSlideIndex = 0;
+
+    
+    
+    function createPillarCardElement(item) {
+      const card = document.createElement('div');
+      const isYT = item.cat_key === 'youtube-16-9';
+      const isMotion = item.cat_key === 'premium-motion';
+      const isTH = item.cat_key === 'talking-heads';
+
+      const cardPillarClass = isYT ? 'yt' : (isMotion ? 'motion' : 'th');
+      card.className = `pillar-card ${cardPillarClass}-card`;
+      card.onclick = (e) => openFullscreenVideo(e, item.videoSrc, isYT || item.is_16_9);
+
+      const tagBadges = (item.tags || []).slice(0, 3).map(t => `<span class="pillar-tag-pill">${t}</span>`).join('');
+      const mediaRatioClass = isYT ? 'widescreen-16-9' : 'vertical-9-14';
+      const formatLabel = isYT ? '16:9 Cinema' : (isMotion ? 'Motion Edit' : 'Talking Head');
+      const resBadgeClass = `res-badge res-${cardPillarClass}`;
+      const playClass = `play-box play-${cardPillarClass}`;
+
+      card.innerHTML = `
+        <div class="pillar-media ${mediaRatioClass}">
+          <img src="${item.thumbSrc}" alt="${item.title}" loading="lazy" onerror="this.src='profile.jpeg'" />
+          <span class="${resBadgeClass}">${item.quality_badge || formatLabel}</span>
+          <span class="pillar-duration-badge">${item.duration || 'HD'}</span>
+          <div class="pillar-play-hover">
+            <div class="${playClass}">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="pillar-card-content">
+          <div class="pillar-card-title">${item.title}</div>
+          <div class="pillar-card-sub">${item.subcategory || item.category}</div>
+          <div class="pillar-card-meta">
+            <div class="work-tags-row">${tagBadges}</div>
+            <span class="pillar-format-pill pillar-format-${cardPillarClass}">${formatLabel}</span>
+          </div>
+        </div>
+      `;
+      return card;
+    }
+
+    function renderPortfolioGrid(filter = 'all') {
+      currentActiveFilter = filter;
+      const grid = document.getElementById('portfolioGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      const allItems = [];
+      if (typeof ALL_VIDEOS !== 'undefined') {
+        ALL_VIDEOS.forEach(v => allItems.push({ ...v, isVideo: true }));
+      }
+
+      // Update badge counts for 3 video pillars
+      const counts = {
+        all: allItems.length,
+        'youtube-16-9': allItems.filter(x => x.cat_key === 'youtube-16-9').length,
+        'premium-motion': allItems.filter(x => x.cat_key === 'premium-motion').length,
+        'talking-heads': allItems.filter(x => x.cat_key === 'talking-heads').length
+      };
+
+      for (const [k, v] of Object.entries(counts)) {
+        const badge = document.getElementById(`badge-${k}`);
+        if (badge) badge.innerText = v;
+      }
+
+      const pillars = [
+        {
+          key: 'youtube-16-9',
+          title: '📺 YOUTUBE LONG-FORM CINEMA (16:9 WIDESCREEN)',
+          badgeClass: 'badge-youtube',
+          gridClass: 'grid-16-9'
+        },
+        {
+          key: 'premium-motion',
+          title: '🏢 PREMIUM REAL ESTATE & MOTION EDITS (9:16 VERTICAL)',
+          badgeClass: 'badge-motion',
+          gridClass: 'grid-9-14'
+        },
+        {
+          key: 'talking-heads',
+          title: '🎙️ VIRAL TALKING HEADS & HIGH-RETENTION SHORTS (9:16 VERTICAL)',
+          badgeClass: 'badge-talking',
+          gridClass: 'grid-9-14'
+        }
+      ];
+
+      if (filter === 'all') {
+        // Render 3 cleanly structured sub-sections so 16:9 and 9:16 are NEVER mixed in the same row!
+        pillars.forEach(p => {
+          const items = allItems.filter(x => x.cat_key === p.key);
+          if (items.length === 0) return;
+
+          const section = document.createElement('div');
+          section.className = 'gallery-pillar-section';
+          section.innerHTML = `
+            <div class="gallery-pillar-header">
+              <div class="pillar-badge-tag ${p.badgeClass}">
+                ${p.title}
+              </div>
+              <span class="gallery-pillar-count">${items.length} Projects</span>
+            </div>
+            <div class="pillar-cards-grid ${p.gridClass}"></div>
+          `;
+          const subgrid = section.querySelector('.pillar-cards-grid');
+          items.forEach(item => subgrid.appendChild(createPillarCardElement(item)));
+          grid.appendChild(section);
+        });
+      } else {
+        // Render single category in its native aspect-ratio grid
+        const p = pillars.find(x => x.key === filter) || { gridClass: 'grid-16-9' };
+        const items = allItems.filter(x => x.cat_key === filter);
+        const section = document.createElement('div');
+        section.className = 'gallery-pillar-section';
+        section.innerHTML = `
+          <div class="pillar-cards-grid ${p.gridClass}"></div>
+        `;
+        const subgrid = section.querySelector('.pillar-cards-grid');
+        items.forEach(item => subgrid.appendChild(createPillarCardElement(item)));
+        grid.appendChild(section);
+      }
+    }
+
+    function filterGallery(category, btnElement) {
+      if (btnElement) {
+        document.querySelectorAll('.filter-tab-btn').forEach(b => b.classList.remove('active'));
+        btnElement.classList.add('active');
+      }
+      renderPortfolioGrid(category);
+    }
+
+    // Carousel Lightbox Functions
+    const lightboxModal = document.getElementById('carouselLightbox');
+    const lightboxImg = document.getElementById('carouselLightboxImg');
+    const lightboxTitle = document.getElementById('carouselLightboxTitle');
+    const lightboxCounter = document.getElementById('carouselLightboxCounter');
+    const lightboxStrip = document.getElementById('carouselLightboxStrip');
+
+    function openCarouselModal(e, deck) {
+      if (e) e.stopPropagation();
+      currentLightboxDeck = deck;
+      currentLightboxSlideIndex = 0;
+      updateLightboxView();
+      lightboxModal.classList.add('open');
+    }
+
+    function updateLightboxView() {
+      if (!currentLightboxDeck || !currentLightboxDeck.slides) return;
+      const slides = currentLightboxDeck.slides;
+      const total = slides.length;
+      lightboxImg.src = slides[currentLightboxSlideIndex];
+      lightboxTitle.innerText = currentLightboxDeck.title;
+      lightboxCounter.innerText = `Slide ${currentLightboxSlideIndex + 1} / ${total}`;
+
+      // Populate thumbnail strip
+      lightboxStrip.innerHTML = '';
+      slides.forEach((s, idx) => {
+        const thumb = document.createElement('img');
+        thumb.src = s;
+        thumb.className = `carousel-strip-thumb ${idx === currentLightboxSlideIndex ? 'active' : ''}`;
+        thumb.onclick = () => {
+          currentLightboxSlideIndex = idx;
+          updateLightboxView();
+        };
+        lightboxStrip.appendChild(thumb);
+      });
+    }
+
+    function prevCarouselSlide() {
+      if (!currentLightboxDeck) return;
+      const total = currentLightboxDeck.slides.length;
+      currentLightboxSlideIndex = (currentLightboxSlideIndex - 1 + total) % total;
+      updateLightboxView();
+    }
+
+    function nextCarouselSlide() {
+      if (!currentLightboxDeck) return;
+      const total = currentLightboxDeck.slides.length;
+      currentLightboxSlideIndex = (currentLightboxSlideIndex + 1) % total;
+      updateLightboxView();
+    }
+
+    function closeCarouselModal(e) {
+      if (e.target === lightboxModal) {
+        closeCarouselModalForce();
+      }
+    }
+
+    function closeCarouselModalForce() {
+      lightboxModal.classList.remove('open');
+      currentLightboxDeck = null;
+    }
+
+    // Keyboard navigation for Lightbox
+    window.addEventListener('keydown', (e) => {
+      if (lightboxModal && lightboxModal.classList.contains('open')) {
+        if (e.key === 'Escape') closeCarouselModalForce();
+        if (e.key === 'ArrowLeft') prevCarouselSlide();
+        if (e.key === 'ArrowRight') nextCarouselSlide();
+      }
+    });
+
+    // Initialize Portfolio Grid on DOM Load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderPortfolioGrid('all');
+        });
+    // Call directly in case DOMContentLoaded already fired
+    renderPortfolioGrid('all');
+    
+
+    function handleQuickOrderSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('orderName').value.trim();
+      const channel = document.getElementById('orderChannel').value.trim();
+      const niche = document.getElementById('orderNiche').value;
+      const topic = document.getElementById('orderTopic').value.trim();
+      const details = document.getElementById('orderDetails').value.trim();
+
+      const msg = `*🚀 NEW QUICK ORDER REQUEST*\n\n` +
+                  `👤 *Name:* ${name}\n` +
+                  `📺 *Channel/Brand:* ${channel}\n` +
+                  `🎯 *Niche:* ${niche}\n` +
+                  `💡 *Topic:* ${topic}\n` +
+                  (details ? `📝 *Details:* ${details}\n\n` : `\n`) +
+                  `_Sent via Nishant Jain Portfolio Quick Order_`;
+
+      const encoded = encodeURIComponent(msg);
+      const waUrl = `https://wa.me/919468993588?text=${encoded}`;
+      window.open(waUrl, '_blank');
+    }
+
+  </script>
+</body>
+</html>
