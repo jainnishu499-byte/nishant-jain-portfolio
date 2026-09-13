@@ -3156,28 +3156,80 @@
         font-size: 13.5px;
         line-height: 1.6;
       }
+      /* Real Stats Section - Slightly narrower and cleaner on mobile */
       .about-stats-grid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 10px !important;
+        max-width: 300px !important;
+        margin: 0 auto 30px !important;
+        width: 100% !important;
       }
       .stat-card {
-        padding: 14px 10px !important;
-        border-radius: 14px;
+        padding: 12px 8px !important;
+        border-radius: 14px !important;
+        text-align: center !important;
       }
-      .stat-number {
-        font-size: 26px !important;
+      .stat-card .stat-number,
+      .stat-card > div > div:first-child {
+        font-size: 21px !important;
+        font-weight: 800 !important;
+        margin-bottom: 2px !important;
       }
-      .stat-label {
-        font-size: 11px;
+      .stat-card .stat-label,
+      .stat-card > div > div:nth-child(2) {
+        font-size: 9.5px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.05em !important;
+        margin-bottom: 2px !important;
+      }
+      .stat-card .stat-desc,
+      .stat-card > div > div:nth-child(3) {
+        font-size: 8.5px !important;
+        opacity: 0.8 !important;
+      }
+
+      /* Powering My Creativity - Clean mobile layout (no overflow or clipping) */
+      .software-heading {
+        margin-bottom: 20px !important;
       }
       .software-grid {
-        gap: 18px !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 14px 10px !important;
+        max-width: 320px !important;
+        margin: 0 auto !important;
+        width: 100% !important;
       }
       .circular-progress-container {
-        transform: scale(0.88);
+        width: 86px !important;
+        transform: none !important;
+        gap: 6px !important;
       }
+      .circular-svg-wrap {
+        width: 74px !important;
+        height: 74px !important;
+      }
+      .circular-progress-container svg {
+        width: 74px !important;
+        height: 74px !important;
+      }
+      .circular-progress-container .icon-wrapper img {
+        width: 26px !important;
+        height: 26px !important;
+        border-radius: 7px !important;
+      }
+      .software-name {
+        font-size: 11px !important;
+        margin-bottom: 2px !important;
+        white-space: nowrap;
+      }
+      .software-percent {
+        font-size: 12px !important;
+      }
+
       .skills-section {
-        margin-top: 0;
+        margin-top: 24px !important;
         overflow-x: hidden;
       }
       .marquee-track {
@@ -3189,21 +3241,60 @@
         font-size: 11.5px !important;
       }
 
-      /* FAQ Section on Mobile */
+      /* FAQ Section on Mobile - Seamless accordion */
       #faq {
-        padding: 60px 12px !important;
+        padding: 50px 14px 60px !important;
+      }
+      .faq-container-inner {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+      }
+      .faq-header-wrap {
+        margin-bottom: 24px !important;
       }
       .faq-card {
-        border-radius: 14px;
-        margin-bottom: 10px;
+        border-radius: 14px !important;
+        margin-bottom: 10px !important;
+        overflow: hidden !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
       }
       .faq-trigger {
-        padding: 15px 14px;
-        font-size: 13.5px;
+        padding: 14px 16px !important;
+        font-size: 13.5px !important;
+        gap: 12px !important;
+        min-height: 48px;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .faq-title {
+        font-size: 13.5px !important;
+        line-height: 1.4 !important;
+        font-weight: 600 !important;
+        text-align: left;
+        flex: 1;
+      }
+      .faq-btn-icon {
+        width: 26px !important;
+        height: 26px !important;
+        min-width: 26px !important;
+        flex-shrink: 0 !important;
       }
       .faq-content-body {
-        padding: 0 14px 14px;
-        font-size: 13px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 0 !important;
+      }
+      .faq-card.open .faq-content-body {
+        max-height: 420px !important;
+      }
+      .faq-content-body p {
+        padding: 0 16px 16px !important;
+        font-size: 13px !important;
+        line-height: 1.65 !important;
+        margin: 0 !important;
+        color: var(--text-secondary) !important;
       }
 
       /* Quick Order Section on Mobile */
@@ -3916,10 +4007,10 @@
           </div>
 
           <div class="profile-text-content">
-            <h2 style="font-size:clamp(24px, 3vw, 32px);font-weight:800;margin-bottom:16px;letter-spacing:-0.03em">
+            <h2 class="about-h2" style="font-size:clamp(24px, 3vw, 32px);font-weight:800;margin-bottom:16px;letter-spacing:-0.03em">
               About me <span class="star-icon">✦</span>
             </h2>
-            <p style="color:var(--text-secondary);font-size:15px;line-height:1.85;font-weight:300;max-width:560px">
+            <p class="about-bio-text" style="color:var(--text-secondary);font-size:15px;line-height:1.85;font-weight:300;max-width:560px">
               I'm Nishant Jain, a video editor and motion graphics designer with over three years of professional experience. I specialize in creating cinematic videos and digital content, focusing on creativity, precision, and strong storytelling.
             </p>
           </div>
@@ -3930,50 +4021,50 @@
           <div class="stat-card">
             <div class="stat-card-glow" style="opacity:0"></div>
             <div>
-              <div style="font-size:clamp(20px, 2.2vw, 26px);font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:-0.04em">120+</div>
-              <div style="font-size:11px;color:#a855f7;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px">Projects Delivered</div>
-              <div style="font-size:10px;color:var(--text-muted)">Cinematic Works</div>
+              <div class="stat-number" style="font-size:clamp(20px, 2.2vw, 26px);font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:-0.04em">120+</div>
+              <div class="stat-label" style="font-size:11px;color:#a855f7;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px">Projects Delivered</div>
+              <div class="stat-desc" style="font-size:10px;color:var(--text-muted)">Cinematic Works</div>
             </div>
           </div>
 
           <div class="stat-card">
             <div class="stat-card-glow" style="opacity:0"></div>
             <div>
-              <div style="font-size:clamp(20px, 2.2vw, 26px);font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:-0.04em">4+</div>
-              <div style="font-size:11px;color:#a855f7;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px">Years Experience</div>
-              <div style="font-size:10px;color:var(--text-muted)">Pro Industry</div>
+              <div class="stat-number" style="font-size:clamp(20px, 2.2vw, 26px);font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:-0.04em">4+</div>
+              <div class="stat-label" style="font-size:11px;color:#a855f7;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px">Years Experience</div>
+              <div class="stat-desc" style="font-size:10px;color:var(--text-muted)">Pro Industry</div>
             </div>
           </div>
 
           <div class="stat-card">
             <div class="stat-card-glow" style="opacity:0"></div>
             <div>
-              <div style="font-size:clamp(20px, 2.2vw, 26px);font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:-0.04em">98%</div>
-              <div style="font-size:11px;color:#a855f7;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px">Client Satisfaction</div>
-              <div style="font-size:10px;color:var(--text-muted)">Top Rated</div>
+              <div class="stat-number" style="font-size:clamp(20px, 2.2vw, 26px);font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:-0.04em">98%</div>
+              <div class="stat-label" style="font-size:11px;color:#a855f7;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px">Client Satisfaction</div>
+              <div class="stat-desc" style="font-size:10px;color:var(--text-muted)">Top Rated</div>
             </div>
           </div>
 
           <div class="stat-card">
             <div class="stat-card-glow" style="opacity:0"></div>
             <div>
-              <div style="font-size:clamp(20px, 2.2vw, 26px);font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:-0.04em">7+</div>
-              <div style="font-size:11px;color:#a855f7;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px">Happy Clients</div>
-              <div style="font-size:10px;color:var(--text-muted)">Worldwide</div>
+              <div class="stat-number" style="font-size:clamp(20px, 2.2vw, 26px);font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:-0.04em">7+</div>
+              <div class="stat-label" style="font-size:11px;color:#a855f7;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px">Happy Clients</div>
+              <div class="stat-desc" style="font-size:10px;color:var(--text-muted)">Worldwide</div>
             </div>
           </div>
         </div>
 
         <!-- Circular Software Proficiency -->
         <div style="text-align:center">
-          <h3 style="font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--text-muted);margin-bottom:52px">
+          <h3 class="software-heading" style="font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--text-muted);margin-bottom:52px">
             Powering my creativity
           </h3>
 
           <div class="software-grid">
             <!-- 1. Premiere Pro (98%) -->
             <div class="circular-progress-container">
-              <div style="position:relative;width:112px;height:112px">
+              <div class="circular-svg-wrap" style="position:relative;width:112px;height:112px">
                 <svg width="112" height="112" viewBox="0 0 112 112" style="position:relative;z-index:2;overflow:visible">
                   <circle cx="56" cy="56" r="38" fill="none" stroke="rgba(168,85,247,0.15)" stroke-width="5" transform="rotate(-90 56 56)"></circle>
                   <circle cx="56" cy="56" r="38" fill="none" stroke="#a855f7" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="238.76" stroke-dashoffset="4.77" transform="rotate(-90 56 56)" style="filter:drop-shadow(0 0 4px rgba(168,85,247,0.5))"></circle>
@@ -3986,14 +4077,14 @@
                 </div>
               </div>
               <div style="text-align:center">
-                <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:4px">Premiere Pro</div>
-                <div style="font-size:14px;font-weight:800;letter-spacing:-0.02em;color:#a855f7">98%</div>
+                <div class="software-name" style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:4px">Premiere Pro</div>
+                <div class="software-percent" style="font-size:14px;font-weight:800;letter-spacing:-0.02em;color:#a855f7">98%</div>
               </div>
             </div>
 
             <!-- 2. After Effects (98%) -->
             <div class="circular-progress-container">
-              <div style="position:relative;width:112px;height:112px">
+              <div class="circular-svg-wrap" style="position:relative;width:112px;height:112px">
                 <svg width="112" height="112" viewBox="0 0 112 112" style="position:relative;z-index:2;overflow:visible">
                   <circle cx="56" cy="56" r="38" fill="none" stroke="rgba(168,85,247,0.15)" stroke-width="5" transform="rotate(-90 56 56)"></circle>
                   <circle cx="56" cy="56" r="38" fill="none" stroke="#a855f7" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="238.76" stroke-dashoffset="4.77" transform="rotate(-90 56 56)" style="filter:drop-shadow(0 0 4px rgba(168,85,247,0.5))"></circle>
@@ -4006,14 +4097,14 @@
                 </div>
               </div>
               <div style="text-align:center">
-                <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:4px">After Effects</div>
-                <div style="font-size:14px;font-weight:800;letter-spacing:-0.02em;color:#a855f7">98%</div>
+                <div class="software-name" style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:4px">After Effects</div>
+                <div class="software-percent" style="font-size:14px;font-weight:800;letter-spacing:-0.02em;color:#a855f7">98%</div>
               </div>
             </div>
 
             <!-- 3. Photoshop (98%) -->
             <div class="circular-progress-container">
-              <div style="position:relative;width:112px;height:112px">
+              <div class="circular-svg-wrap" style="position:relative;width:112px;height:112px">
                 <svg width="112" height="112" viewBox="0 0 112 112" style="position:relative;z-index:2;overflow:visible">
                   <circle cx="56" cy="56" r="38" fill="none" stroke="rgba(168,85,247,0.15)" stroke-width="5" transform="rotate(-90 56 56)"></circle>
                   <circle cx="56" cy="56" r="38" fill="none" stroke="#a855f7" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="238.76" stroke-dashoffset="4.77" transform="rotate(-90 56 56)" style="filter:drop-shadow(0 0 4px rgba(168,85,247,0.5))"></circle>
@@ -4026,14 +4117,14 @@
                 </div>
               </div>
               <div style="text-align:center">
-                <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:4px">Photoshop</div>
-                <div style="font-size:14px;font-weight:800;letter-spacing:-0.02em;color:#a855f7">98%</div>
+                <div class="software-name" style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:4px">Photoshop</div>
+                <div class="software-percent" style="font-size:14px;font-weight:800;letter-spacing:-0.02em;color:#a855f7">98%</div>
               </div>
             </div>
 
             <!-- 4. DaVinci Resolve (70%) -->
             <div class="circular-progress-container">
-              <div style="position:relative;width:112px;height:112px">
+              <div class="circular-svg-wrap" style="position:relative;width:112px;height:112px">
                 <svg width="112" height="112" viewBox="0 0 112 112" style="position:relative;z-index:2;overflow:visible">
                   <circle cx="56" cy="56" r="38" fill="none" stroke="rgba(192,132,252,0.12)" stroke-width="5" transform="rotate(-90 56 56)"></circle>
                   <circle cx="56" cy="56" r="38" fill="none" stroke="#c084fc" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="238.76" stroke-dashoffset="71.63" transform="rotate(-90 56 56)" style="filter:drop-shadow(0 0 4px rgba(192,132,252,0.4))"></circle>
@@ -4046,14 +4137,14 @@
                 </div>
               </div>
               <div style="text-align:center">
-                <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:4px">DaVinci Resolve</div>
-                <div style="font-size:14px;font-weight:800;letter-spacing:-0.02em;color:#c084fc">70%</div>
+                <div class="software-name" style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:4px">DaVinci Resolve</div>
+                <div class="software-percent" style="font-size:14px;font-weight:800;letter-spacing:-0.02em;color:#c084fc">70%</div>
               </div>
             </div>
 
             <!-- 5. Blender (30%) -->
             <div class="circular-progress-container">
-              <div style="position:relative;width:112px;height:112px">
+              <div class="circular-svg-wrap" style="position:relative;width:112px;height:112px">
                 <svg width="112" height="112" viewBox="0 0 112 112" style="position:relative;z-index:2;overflow:visible">
                   <circle cx="56" cy="56" r="38" fill="none" stroke="rgba(216,180,254,0.10)" stroke-width="5" transform="rotate(-90 56 56)"></circle>
                   <circle cx="56" cy="56" r="38" fill="none" stroke="#d8b4fe" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="238.76" stroke-dashoffset="167.13" transform="rotate(-90 56 56)" style="filter:drop-shadow(0 0 4px rgba(216,180,254,0.3))"></circle>
@@ -4066,8 +4157,8 @@
                 </div>
               </div>
               <div style="text-align:center">
-                <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:4px">Blender</div>
-                <div style="font-size:14px;font-weight:800;letter-spacing:-0.02em;color:#d8b4fe">30%</div>
+                <div class="software-name" style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:4px">Blender</div>
+                <div class="software-percent" style="font-size:14px;font-weight:800;letter-spacing:-0.02em;color:#d8b4fe">30%</div>
               </div>
             </div>
           </div>
@@ -4095,7 +4186,7 @@
     <!-- ================= FAQ SECTION ================= -->
     <section id="faq">
       <div class="faq-container-inner">
-        <div style="margin-bottom:56px;text-align:center">
+        <div class="faq-header-wrap" style="margin-bottom:56px;text-align:center">
           <div style="font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px">FAQ</div>
           <h2 style="font-size:clamp(24px, 3vw, 32px);font-weight:800;letter-spacing:-0.03em;line-height:1.2">
             Your questions,<br /><span style="color:var(--accent)">answered.</span>
@@ -4672,7 +4763,8 @@
 
     // 4. FAQ Toggle
     function toggleFaq(btn) {
-      const card = btn.parentElement;
+      const card = btn.closest(".faq-card") || btn.parentElement;
+      if (!card) return;
       const isOpen = card.classList.contains("open");
 
       document.querySelectorAll(".faq-card").forEach(c => c.classList.remove("open"));
