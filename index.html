@@ -36,12 +36,21 @@
       scroll-behavior: smooth;
     }
 
-    body {
+    html, body {
       background-color: var(--bg);
       color: var(--text-primary);
       font-family: 'Sora', sans-serif;
-      overflow-x: hidden;
+      overflow-x: hidden !important;
+      max-width: 100vw !important;
+      width: 100% !important;
       line-height: 1.6;
+      position: relative;
+      -webkit-text-size-adjust: 100%;
+    }
+    main {
+      overflow-x: hidden !important;
+      width: 100% !important;
+      max-width: 100vw !important;
       position: relative;
     }
 
@@ -2856,6 +2865,441 @@
       50% { transform: translateY(-6px); }
     }
 
+  
+    /* ================= COMPREHENSIVE ULTRA-POLISHED MOBILE RESPONSIVENESS ================= */
+    @media (max-width: 768px) {
+      /* Root & Global Container Widths */
+      html, body, main {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+      }
+
+      /* Navbar on Mobile */
+      .navbar-wrapper {
+        top: 10px;
+        padding: 0 8px;
+        gap: 6px;
+      }
+      .nav-logo-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+      }
+      .navbar-pill {
+        padding: 3px 5px;
+        max-width: calc(100vw - 54px);
+        gap: 2px;
+      }
+      .nav-pill-btn {
+        padding: 5px 8px;
+        font-size: 11px;
+      }
+      /* Hide secondary links on mobile to prevent navbar crowding/truncation */
+      .nav-pill-btn[href="#about"],
+      .nav-pill-btn[href="#faq"] {
+        display: none !important;
+      }
+      .nav-pill-contact-btn {
+        padding: 5px 10px;
+        font-size: 11px;
+      }
+      .nav-pill-order-btn {
+        padding: 5px 12px;
+        font-size: 10px;
+        letter-spacing: 0.04em;
+      }
+
+      /* Hero Section on Mobile */
+      .hero-section {
+        padding: 95px 14px 60px;
+        min-height: auto;
+      }
+      .hero-creator-badge {
+        padding: 4px 12px 4px 5px;
+        margin-bottom: 20px;
+      }
+      .hero-avatar-ring {
+        width: 28px;
+        height: 28px;
+      }
+      .hero-avatar-name {
+        font-size: 12px;
+      }
+      .hero-avatar-status {
+        font-size: 10px;
+      }
+      .avail-badge-wrap {
+        margin-bottom: 24px;
+      }
+      .avail-badge {
+        padding: 6px 14px;
+      }
+      .avail-text {
+        font-size: 10px;
+      }
+      .hero-h1 {
+        font-size: clamp(34px, 9.5vw, 54px) !important;
+        letter-spacing: -0.04em;
+        margin-bottom: 12px;
+      }
+      .hero-subtitle-box {
+        font-size: clamp(14px, 4vw, 18px);
+        min-height: 1.8em;
+      }
+      .hero-p {
+        font-size: 13.5px;
+        line-height: 1.6;
+        padding: 0 8px;
+        margin-top: 10px;
+      }
+      .hero-btn-row {
+        margin-top: 32px;
+      }
+      .hero-cta-btn {
+        padding: 12px 28px;
+        font-size: 12px;
+      }
+      .hero-stats-flex {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        max-width: 360px;
+        margin: 36px auto 0;
+        gap: 8px;
+      }
+      .hero-stat-num {
+        font-size: 24px !important;
+      }
+      .hero-stat-lbl {
+        font-size: 10px;
+      }
+      /* Prevent cosmic rings from spilling beyond viewport */
+      .hero-ring-3 {
+        display: none !important;
+      }
+      .hero-ring-2 {
+        width: 330px !important;
+        height: 330px !important;
+      }
+      .hero-ring-1 {
+        width: 250px !important;
+        height: 250px !important;
+      }
+      .hero-center-glow {
+        width: 300px !important;
+        height: 200px !important;
+      }
+
+      /* Recent Works Box & 3D Carousel on Mobile */
+      #work {
+        padding: 40px 10px 60px;
+      }
+      .works-card-box {
+        padding: 24px 10px;
+        border-radius: 20px;
+      }
+      .works-title-area h2 {
+        font-size: 22px;
+      }
+      .works-title-area p {
+        font-size: 13px;
+        padding: 0 8px;
+      }
+      .desktop-carousel {
+        height: 420px;
+        margin: 10px 0;
+      }
+      .carousel-item {
+        width: min(250px, 72vw);
+        border-radius: 18px;
+      }
+      .carousel-arrow-btn {
+        width: 36px;
+        height: 36px;
+        background: rgba(18, 10, 36, 0.85);
+      }
+      .carousel-arrow-btn.arrow-left {
+        left: 4px;
+      }
+      .carousel-arrow-btn.arrow-right {
+        right: 4px;
+      }
+      .carousel-dots-wrap {
+        margin-top: 14px;
+        gap: 6px;
+      }
+      .carousel-nav-dot {
+        width: 7px;
+        height: 7px;
+      }
+
+      /* 3 Showcase Pillar Containers on Mobile */
+      .showcase-pillar-container {
+        padding: 20px 12px 24px !important;
+        margin: 28px 0 !important;
+        border-radius: 18px !important;
+      }
+      .pillar-badge-tag {
+        font-size: 0.68rem;
+        padding: 5px 12px;
+        margin-bottom: 10px;
+      }
+      .pillar-h3 {
+        font-size: 1.35rem !important;
+        line-height: 1.3;
+        margin-bottom: 8px;
+      }
+      .pillar-sub {
+        font-size: 0.82rem;
+        line-height: 1.5;
+        margin-bottom: 18px;
+      }
+
+      /* Grids: Single Column on Mobile */
+      .pillar-cards-grid,
+      .pillar-cards-grid.grid-16-9,
+      .pillar-cards-grid.grid-9-14 {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        width: 100% !important;
+      }
+      .pillar-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 16px;
+      }
+      .pillar-card-content {
+        padding: 14px 14px 16px;
+      }
+      .pillar-card-title {
+        font-size: 0.95rem;
+        line-height: 1.35;
+      }
+      .pillar-card-sub {
+        font-size: 0.76rem;
+      }
+      .pillar-tag-pill {
+        font-size: 0.65rem;
+        padding: 2px 7px;
+      }
+      .pillar-format-pill {
+        font-size: 0.68rem;
+        padding: 2px 7px;
+      }
+
+      /* Master Gallery Header & Filter Tabs on Mobile */
+      .gallery-header-area {
+        padding: 20px 8px 10px;
+      }
+      .gallery-h3 {
+        font-size: 1.45rem;
+      }
+      .gallery-sub {
+        font-size: 0.82rem;
+        margin-bottom: 20px;
+      }
+      .filter-tabs-wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 4px 6px 14px;
+        gap: 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .filter-tabs-wrapper::-webkit-scrollbar {
+        display: none;
+      }
+      .filter-tab-btn {
+        flex-shrink: 0;
+        padding: 8px 14px;
+        font-size: 12px;
+        white-space: nowrap;
+      }
+      .portfolio-grid {
+        padding: 0 4px !important;
+        gap: 28px !important;
+      }
+      .gallery-pillar-header {
+        padding-bottom: 10px;
+      }
+      .gallery-pillar-count {
+        font-size: 0.75rem;
+        padding: 3px 10px;
+      }
+
+      /* About Me Section on Mobile */
+      .about-section {
+        padding: 60px 12px !important;
+      }
+      .content-container {
+        gap: 32px !important;
+      }
+      .profile-card {
+        padding: 22px 14px !important;
+        border-radius: 18px !important;
+        gap: 18px !important;
+      }
+      .profile-photo-wrapper {
+        width: 86px !important;
+        height: 86px !important;
+      }
+      .about-h2 {
+        font-size: 20px !important;
+      }
+      .about-role-tag {
+        font-size: 12px;
+      }
+      .about-bio-text {
+        font-size: 13.5px;
+        line-height: 1.6;
+      }
+      .about-stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+      }
+      .stat-card {
+        padding: 14px 10px !important;
+        border-radius: 14px;
+      }
+      .stat-number {
+        font-size: 26px !important;
+      }
+      .stat-label {
+        font-size: 11px;
+      }
+      .software-grid {
+        gap: 18px !important;
+      }
+      .circular-progress-container {
+        transform: scale(0.88);
+      }
+      .skills-section {
+        margin-top: 0;
+        overflow-x: hidden;
+      }
+      .marquee-track {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+      }
+      .skill-tag {
+        padding: 7px 14px !important;
+        font-size: 11.5px !important;
+      }
+
+      /* FAQ Section on Mobile */
+      #faq {
+        padding: 60px 12px !important;
+      }
+      .faq-card {
+        border-radius: 14px;
+        margin-bottom: 10px;
+      }
+      .faq-trigger {
+        padding: 15px 14px;
+        font-size: 13.5px;
+      }
+      .faq-content-body {
+        padding: 0 14px 14px;
+        font-size: 13px;
+      }
+
+      /* Quick Order Section on Mobile */
+      .quick-order-section {
+        padding: 50px 12px 70px !important;
+      }
+      .quick-order-container {
+        gap: 30px !important;
+      }
+      .outline-stroke-text {
+        font-size: clamp(32px, 9vw, 48px) !important;
+      }
+      .solid-white-text {
+        font-size: clamp(38px, 11vw, 56px) !important;
+      }
+      .touch-sub {
+        font-size: 13.5px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+      .contact-row-card {
+        padding: 12px 14px;
+        border-radius: 14px;
+      }
+      .contact-card-val {
+        font-size: 13px;
+      }
+      .quick-order-box {
+        padding: 20px 14px !important;
+        border-radius: 18px !important;
+      }
+      .quick-order-title {
+        font-size: 1.25rem !important;
+        margin-bottom: 16px;
+      }
+      .order-inputs-grid-2 {
+        grid-template-columns: 1fr !important;
+        gap: 10px;
+      }
+      .order-field-wrap {
+        margin-bottom: 10px;
+      }
+      .order-field-label {
+        font-size: 10px;
+      }
+      .order-field-input,
+      .order-field-select,
+      .order-field-textarea {
+        padding: 10px 12px;
+        font-size: 13px;
+      }
+      .order-submit-btn {
+        padding: 14px 20px;
+      }
+      .order-btn-content {
+        font-size: 12px;
+      }
+
+      /* Floating WA Bubble on Mobile */
+      .floating-wa-bubble {
+        bottom: 16px !important;
+        right: 16px !important;
+        width: 50px !important;
+        height: 50px !important;
+      }
+      .floating-wa-bubble svg {
+        width: 26px !important;
+        height: 26px !important;
+      }
+
+      /* Video Modal Player on Mobile */
+      .video-modal-bg {
+        padding: 10px !important;
+      }
+      .video-modal-frame {
+        height: 76vh !important;
+        max-width: 96vw !important;
+        border-radius: 16px !important;
+      }
+      .video-modal-frame.widescreen-16-9 {
+        width: 98vw !important;
+        max-height: 46vh !important;
+        border-radius: 12px !important;
+      }
+      .video-modal-close {
+        top: 12px !important;
+        right: 12px !important;
+        width: 38px !important;
+        height: 38px !important;
+      }
+      .video-modal-close svg {
+        width: 18px !important;
+        height: 18px !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -4032,6 +4476,7 @@
         let opacity = 1;
         let zIndex = 1;
 
+        const isSmallMobile = window.innerWidth <= 480;
         if (isCenter) {
           x = 0;
           scale = 1;
@@ -4039,21 +4484,21 @@
           opacity = 1;
           zIndex = 10;
         } else if (offset === -1) {
-          x = isMobile ? -140 : -240;
-          scale = 0.8;
-          rotateY = 20;
-          opacity = 0.85;
+          x = isSmallMobile ? -75 : (isMobile ? -110 : -240);
+          scale = isMobile ? 0.82 : 0.8;
+          rotateY = isMobile ? 12 : 20;
+          opacity = isSmallMobile ? 0.25 : 0.65;
           zIndex = 5;
         } else if (offset === 1) {
-          x = isMobile ? 140 : 240;
-          scale = 0.8;
-          rotateY = -20;
-          opacity = 0.85;
+          x = isSmallMobile ? 75 : (isMobile ? 110 : 240);
+          scale = isMobile ? 0.82 : 0.8;
+          rotateY = isMobile ? -12 : -20;
+          opacity = isSmallMobile ? 0.25 : 0.65;
           zIndex = 5;
         } else {
-          x = offset < 0 ? (isMobile ? -250 : -450) : (isMobile ? 250 : 450);
-          scale = 0.65;
-          rotateY = offset < 0 ? 35 : -35;
+          x = offset < 0 ? (isMobile ? -160 : -450) : (isMobile ? 160 : 450);
+          scale = 0.6;
+          rotateY = offset < 0 ? 25 : -25;
           opacity = 0;
           zIndex = 1;
         }
@@ -4127,6 +4572,27 @@
 
     window.addEventListener("resize", position3DCards);
     render3DCarousel();
+
+    // Touch Swipe Support for 3D Carousel on Mobile
+    let carouselTouchStartX = 0;
+    let carouselTouchEndX = 0;
+    const carouselStage = document.getElementById("desktopCarousel");
+    if (carouselStage) {
+      carouselStage.addEventListener("touchstart", (e) => {
+        carouselTouchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      carouselStage.addEventListener("touchend", (e) => {
+        carouselTouchEndX = e.changedTouches[0].screenX;
+        const swipeDiff = carouselTouchEndX - carouselTouchStartX;
+        if (Math.abs(swipeDiff) > 40) {
+          if (swipeDiff < 0) {
+            rotateSlide(1); // swipe left -> next video
+          } else {
+            rotateSlide(-1); // swipe right -> previous video
+          }
+        }
+      }, { passive: true });
+    }
 
     // 2. Typewriter in Hero Section
     const phrases = [
